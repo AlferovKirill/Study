@@ -1,4 +1,4 @@
 <h1 align="center">Study</h1>
-<p><a href="#en">En</a> <u>/</u> <a href="#ru">Ru</a></p>
-<p>ew[orjoewrjvowerjnvowern]oenv<br>we[rln[orevin[weovrner</p>
+<p><a href="#en">En</a> / <a href="#ru">Ru</a></p>
+<p><u>ew[orjoewrjvowerjnvowern]oenv<br>we[rln[orevin[weovrner</u></p>
 <p><a name="#en">Наверх</a></p>
