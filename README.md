@@ -8,11 +8,10 @@
 <ul>
   <li><p>String - моя реализация класса строк. Всё декомпозировано. Файлы:
 <dl>
-  <dt>Coffee</dt>
-  <dd>- black hot drink</dd>
-  <dt>Milk</dt>
-  <dd>- white cold drink</dd>
-</dl></p></li>
+  <dt>Coffee</dt><dd>- black hot drink</dd>
+  <dt>Milk</dt><dd>- white cold drink</dd></dl>
+  </p></li>
+  
   <li><p>цдоуктдои му</p></li>
   <li><p>цжудлктмхщеклуи</p></li>
 </ul>
