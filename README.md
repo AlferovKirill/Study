@@ -8,12 +8,12 @@
 <ul>
   <li><p>String - моя реализация класса строк. Всё декомпозировано. Файлы:
     <ol>
-      <li>Кофе</li>
-      <li>Чай</li>
-      <li>Молоко</li>
+      <li>string.cpp</li>
+      <li>string.h</li>
+      <li>test.cpp</li>
     </ol>
   </p></li>
   
-  <li><p>цдоуктдои му</p></li>
-  <li><p>цжудлктмхщеклуи</p></li>
+  <li><p>BigInt</p></li>
+  <li><p>Shapes</p></li>
 </ul>
