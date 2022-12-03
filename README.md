@@ -1,5 +1,5 @@
 <h1 align="center">Study</h1>
-## Additional languages: [Русский](README.RU.md)
+<h3>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/README.RU.md">Русский</a></h3>
 
 <p><a name="#en">This repository contains all of the mini-projects that I did to assimilate the material I have learned by pluses.</a></p>
 <ul>
