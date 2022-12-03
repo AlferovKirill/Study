@@ -1,5 +1,5 @@
 <h1 align="center">Study</h1>
-<p><a href="#en">En</a> / <a href="#ru">Ru</a></p>
+<p><a href="#en">English</a> / <a href="#ru">Russian</a></p>
 
 <p><a name="#en">This repository contains all of the mini-projects that I did to assimilate the material I have learned by pluses.</a></p>
 <ul>
