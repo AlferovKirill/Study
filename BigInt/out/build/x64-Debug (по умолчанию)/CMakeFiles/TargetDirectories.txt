@@ -1,3 +1,0 @@
-C:/Users/dpbql/Desktop/BigInt/out/build/x64-Debug (по умолчанию)/CMakeFiles/BigInt.dir
-C:/Users/dpbql/Desktop/BigInt/out/build/x64-Debug (по умолчанию)/CMakeFiles/edit_cache.dir
-C:/Users/dpbql/Desktop/BigInt/out/build/x64-Debug (по умолчанию)/CMakeFiles/rebuild_cache.dir
