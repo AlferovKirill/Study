@@ -16,10 +16,14 @@ int main() {
 	std::cout << a2 << ", size = " << a2.len() << std::endl;
 	*/
 
-	BigInt b1 = "00002";
-	BigInt b2 = "32482175483270569712305239885644443";
+	BigInt b1 = "000044";
+	BigInt b2 = -1244251;
+
+	std::cout << b1 << std::endl;
+	std::cout << b2 << std::endl;
 
 	b2 += b1;
 
+	std::cout << b1 << std::endl;
 	std::cout << b2 << std::endl;
 }
