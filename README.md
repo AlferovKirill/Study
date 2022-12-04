@@ -5,16 +5,16 @@
 
 <p>1. String - my implementation of class string. Decomposed. All files:</p>
 <ul>
-  <li>string.cpp - implementation file with the definition of all class's functions.</li>
-  <li>string.h - header file with the declaration of the class and all necessary functions.</li>
-  <li>test.cpp - test file.</li>
+  <li>src/string.cpp - implementation file with the definition of all class's functions.</li>
+  <li>inc/string.h - header file with the declaration of the class and all necessary functions.</li>
+  <li>src/test.cpp - test file.</li>
 </ul>
 
 <p>2. BigInt - my implementation of a class big integers. Decomposed. All files:</p>
 <ul>
-  <li>bigint.cpp - implementation file with the definition of all class's functions.</li>
-  <li>bigint.h - header file with the declaration of the class and all necessary functions.</li>
-  <li>test.cpp - test file.</li>
+  <li>src/bigint.cpp - implementation file with the definition of all class's functions.</li>
+  <li>inc/bigint.h - header file with the declaration of the class and all necessary functions.</li>
+  <li>src/test.cpp - test file.</li>
 </ul>
 
 <p>3. Shapes - project with geometry and based figures. Decomposed. All files:</p>
