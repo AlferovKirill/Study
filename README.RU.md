@@ -1,5 +1,5 @@
 <h1 align="center">Study</h1>
-<h4>Дополнительные языки: <a href="https://github.com/AlferovKirill/Study/edit/main/README.md">Русский</a></h4>
+<h4>На других языках: <a href="https://github.com/AlferovKirill/Study/edit/main/README.md">English</a></h4>
 
 <p>Данный репозиторий содержит в себе все учебные мини-проекты, которые я выполнял с целью закрепить пройденный материал по плюсам.</p>
 
