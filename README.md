@@ -1,18 +1,21 @@
 <h1 align="center">Study</h1>
-<p><a href="#en">English</a> / <a href="#ru">Russian</a></p>
+<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/README.RU.md">Русский</a></h4>
 
-<p><a name="#en">This repository contains all of the mini-projects that I did to assimilate the material I have learned by pluses.</a></p>
+<p>This repository contains all of the mini-projects that I did to assimilate the material I have learned by pluses.</p>
+
+<p>1. String - my implementation of class string. Decomposed. All files:</p>
 <ul>
-  <li><p>String - my implementation of class string. Decomposed. All files:<br>1. string.cpp - implementation file with the definition of all class's functions. <br>2. string.h - header file with the declaration of the class and all necessary functions.<br>3. test.cpp - test file.</p></li>
-  
-  <li><p>BigInt - моя реализация класса больших целых чисел. Всё декомпозировано. Файлы:</p></li>
-  <li><p>Shapes - проект с геометрией. Всё декомпозировано. Файлы:</p></li>
+  <li>string.cpp - implementation file with the definition of all class's functions.</li>
+  <li>string.h - header file with the declaration of the class and all necessary functions.</li>
+  <li>test.cpp - test file.</li>
 </ul>
 
-<p><a name="#ru">Данный репозиторий содержит в себе все учебные мини-проекты, которые я выполнял с целью закрепить пройденный материал по плюсам.</a></p>
+<p>2. BigInt - my implementation of a class big integers. Decomposed. All files:</p>
 <ul>
-  <li><p>String - моя реализация класса строк. Всё декомпозировано. Файлы:<br>1. string.cpp - файл реализации с определением всех функций класса. <br>2. string.h - заголовочный файл с объявлением класса и всех необходимых функций.<br>3. test.cpp - файлик с тестами.</p></li>
-  
-  <li><p>BigInt - моя реализация класса больших целых чисел. Всё декомпозировано. Файлы:</p></li>
-  <li><p>Shapes - проект с геометрией. Всё декомпозировано. Файлы:</p></li>
+  <li>bigint.cpp - implementation file with the definition of all class's functions.</li>
+  <li>bigint.h - header file with the declaration of the class and all necessary functions.</li>
+  <li>test.cpp - test file.</li>
 </ul>
+
+<p>3. Shapes - project with geometry and based figures. Decomposed. All files:</p>
+
