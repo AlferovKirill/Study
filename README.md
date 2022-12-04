@@ -6,6 +6,6 @@
 <ul>
   <li><p>String - my implementation of class string. Decomposed. All files:<br>1. string.cpp - implementation file with the definition of all class's functions. <br>2. string.h - header file with the declaration of the class and all necessary functions.<br>3. test.cpp - test file.</p></li>
   
-  <li><p>BigInt - моя реализация класса больших целых чисел. Всё декомпозировано. Файлы:</p></li>
-  <li><p>Shapes - проект с геометрией. Всё декомпозировано. Файлы:</p></li>
+  <li><p>BigInt - my implementation of a class big integers. Decomposed. All files:</p></li>
+  <li><p>Shapes - project with geometry and based figures. Decomposed. All files:</p></li>
 </ul>
