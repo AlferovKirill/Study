@@ -1,8 +1,18 @@
-#include "string.h"
+#include "../inc/string.h"
 
 String::String() : size(1), str(new char('\0')) {}
 
 String::String(const String& string) : String(string.str) {}
+
+String& String::operator=(String string) {
+	std::swap(size, string.size);
+	std::swap(str, string.str);
+	return *this;
+}
+
+String::~String() {
+	delete str;
+}
 
 String::String(const char* cstring) : size(std::strlen(cstring)), str(new char[size + 1]) {
 	std::strcpy(str, cstring);
@@ -18,11 +28,6 @@ String::String(std::initializer_list<char> l) : size(l.size()), str(new char[siz
 	str[size] = '\0';
 }
 
-String& String::operator=(String string) {
-	swap(string);
-	return *this;
-}
-
 char& String::operator[](size_t i) {
 	return str[i];
 }
@@ -33,10 +38,6 @@ const char& String::operator[](size_t i) const {
 
 size_t String::len() const {
 	return size;
-}
-
-String::~String() {
-	delete str;
 }
 
 std::ostream& operator<<(std::ostream& out, const String& string) {
@@ -89,9 +90,4 @@ bool operator<(const String& string_1, const String& string_2) {
 
 bool operator>(const String& string_1, const String& string_2) {
 	return (string_2 < string_1);
-}
-
-void String::swap(String& string) {
-	std::swap(size, string.size);
-	std::swap(str, string.str);
 }
