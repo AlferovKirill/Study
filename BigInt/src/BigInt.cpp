@@ -1,7 +1,8 @@
 ﻿#include "../inc/BigInt.h"
 
 BigInt::BigInt() : size(1), sign(true), num_str(new char[size + 1]) {
-	num_str = "0";
+	num_str[0] = '0';
+	num_str[0] = '\0';
 }
 
 BigInt::BigInt(const BigInt& big_int): size(big_int.size), sign(big_int.sign), num_str(new char[size + 1]) {
@@ -102,12 +103,59 @@ BigInt& BigInt::operator-=(const BigInt& big_int) {
 	return *this;
 }
 
+BigInt& BigInt::operator*=(const BigInt& big_int) {
+	if (sign == big_int.sign) {
+		operator_assigment_multi(big_int);
+		sign = true;
+	}
+	else {
+		operator_assigment_multi(big_int);
+
+		if ((num_str[0] == '0') && (size == 1)) {
+			sign = true;
+		}
+		else {
+			sign = false;
+		}
+	}
+	return *this;
+}
+
+BigInt& BigInt::operator/=(const BigInt& big_int) {
+	return *this;
+}
+
+BigInt& BigInt::operator++() {
+	*this += 1;
+	return *this;
+}
+
+BigInt& BigInt::operator--() {
+	*this -= 1;
+	return *this;
+}
+
+BigInt BigInt::operator++(int) {
+	BigInt copy = *this;
+	++(*this);
+
+	return copy;
+}
+
+BigInt BigInt::operator--(int) {
+	BigInt copy = *this;
+	--(*this);
+
+	return copy;
+}
+
 size_t BigInt::len() const {
 	return size;
 }
 
 void BigInt::cut() const {
 	size_t cut_size = 0;
+	sign = true;
 
 	for (size_t i = 0; i < size; ++i) {
 		if ((num_str[i] >= '1') && (num_str[i] <= '9')) {
@@ -127,7 +175,17 @@ void BigInt::cut() const {
 		cut_size = 0;
 	}
 
-	if (cut_size > 0) {
+	if (size == cut_size) {
+		char* new_str = new char[2];
+		new_str[0] = '0';
+		new_str[1] = '\0';
+
+		size = 1;
+		std::swap(num_str, new_str);
+
+		delete[] new_str;
+	}
+	else if (cut_size > 0) {
 		char* new_str = new char[size - cut_size + 1];
 		strncpy(new_str, &num_str[cut_size], size - cut_size);
 		new_str[size - cut_size] = '\0';
@@ -143,6 +201,20 @@ void BigInt::swap(BigInt& big_int) {
 	std::swap(sign, big_int.sign);
 	std::swap(size, big_int.size);
 	std::swap(num_str, big_int.num_str);
+}
+
+BigInt& BigInt::multi10() {
+	char* new_str = new char[size + 2];
+
+	strncpy(new_str, num_str, size);
+	new_str[size] = '0';
+	new_str[size + 1] = '\0';
+	++size;
+
+	std::swap(num_str, new_str);
+	delete[] new_str;
+
+	return *this;
 }
 
 BigInt& BigInt::operator_assigment_plus(const BigInt& big_int) {
@@ -237,6 +309,69 @@ BigInt& BigInt::operator_assigment_minus(const BigInt& big_int) {
 	return *this;
 }
 
+BigInt& BigInt::operator_assigment_multi(const BigInt& big_int) {
+	BigInt result_of_multi = 0, temp = 0;
+	short multi_symbol = 0, multi_remainder = 0;
+	char* interim_result;
+
+	if (size > big_int.size) {
+		interim_result = new char[size + 2];
+		interim_result[size + 1] = '\0';
+
+		for (long long int i = 0, k = big_int.size - 1; i < big_int.size; ++i, --k) {
+			for (long long int j = size - 1; j >= 0; --j) {
+				multi_symbol = (big_int.num_str[i] - '0') * (num_str[j] - '0') + multi_remainder;
+				multi_remainder = multi_symbol / 10;
+				multi_symbol %= 10;
+
+				interim_result[j + 1] = multi_symbol + '0';
+			}
+
+			interim_result[0] = multi_remainder + '0';
+			multi_remainder = 0;
+
+			temp = interim_result;
+			temp.cut();
+
+			for (long long int j = 0; j < k; ++j) {
+				temp.multi10();
+			}
+
+			result_of_multi += temp;
+		}
+	}
+	else {
+		interim_result = new char[big_int.size + 2];
+		interim_result[big_int.size + 1] = '\0';
+
+		for (long long int i = 0, k = size - 1; i < size; ++i, --k) {
+			for (long long int j = big_int.size - 1; j >= 0; --j) {
+				multi_symbol = (big_int.num_str[j] - '0') * (num_str[i] - '0') + multi_remainder;
+				multi_remainder = multi_symbol / 10;
+				multi_symbol %= 10;
+
+				interim_result[j + 1] = multi_symbol + '0';
+			}
+
+			interim_result[0] = multi_remainder + '0';
+			multi_remainder = 0;
+
+			temp = interim_result;
+			temp.cut();
+
+			for (long long int j = 0; j < k; ++j) {
+				temp.multi10();
+			}
+
+			result_of_multi += temp;
+		}
+	}
+
+	*this = result_of_multi;
+
+	return *this;
+}
+
 std::ostream& operator<<(std::ostream& out, const BigInt& big_int) {
 	if (!big_int.sign) {
 		out << '-';
@@ -320,5 +455,12 @@ BigInt operator-(const BigInt& big_int_1, const BigInt& big_int_2) {
 	BigInt result = big_int_1;
 	result -= big_int_2;
 
+	return result;
+}
+
+BigInt operator*(const BigInt& big_int_1, const BigInt& big_int_2) {
+	BigInt result = big_int_1;
+	result *= big_int_2;
+	
 	return result;
 }
