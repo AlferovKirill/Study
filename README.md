@@ -8,7 +8,7 @@
   <li>src/string.cpp - implementation file with the definition of all class's functions.</li>
   <li>inc/string.h - header file with the declaration of the class and all necessary functions.</li>
   <li>src/test.cpp - test file.</li>
-  <li>src/test.cpp - test file.</li>
+  <li>CMakeLists.txt - build file.</li>
 </ul>
 
 <p>2. BigInt - my implementation of a class big integers. Decomposed. All files:</p>
