@@ -34,6 +34,11 @@ BigInt::BigInt(int num) : num_str(new char[12]) {
 	cut();
 }
 
+BigInt::BigInt(char ch): size(1), sign(true), num_str(new char[2]) {
+	num_str[0] = ch;
+	num_str[1] = '\0';
+}
+
 BigInt::BigInt(long long int num) : num_str(new char[21]) {
 	_i64toa(num, num_str, 10);
 	size = strlen(num_str);
@@ -56,48 +61,100 @@ BigInt::BigInt(const char* str) : size(strlen(str)), num_str(new char[size + 1])
 }
 
 BigInt& BigInt::operator+=(const BigInt& big_int) {
+	BigInt big_int_1 = *this, big_int_2 = big_int;
+	big_int_1.sign = true, big_int_2.sign = true;
+
 	if ((sign != big_int.sign) && sign) {
-		BigInt abs = big_int.num_str;
-
-		if (*this < abs) {
-			sign = false;
+		if (big_int_1 >= big_int_2) {
+			big_int_1.operator_assigment_minus(big_int_2);
+			big_int_1.sign = true;
+			
+			swap(big_int_1);
 		}
-
-		operator_assigment_minus(big_int);
+		else {
+			big_int_2.operator_assigment_minus(big_int_1);
+			big_int_2.sign = false;
+			
+			swap(big_int_2);
+		}
 	}
 	else if ((sign != big_int.sign) && !sign) {
-		BigInt abs = num_str;
-
-		if (abs < big_int) {
-			sign = true;
+		if (big_int_1 >= big_int_2) {
+			big_int_1.operator_assigment_minus(big_int_2);
+			big_int_1.sign = false;
+			
+			swap(big_int_1);
 		}
-
-		operator_assigment_minus(big_int);
+		else {
+			big_int_2.operator_assigment_minus(big_int_2);
+			big_int_2.sign = true;
+			
+			swap(big_int_2);
+		}
 	}
 	else {
-		operator_assigment_plus(big_int);
+		if (big_int_1 >= big_int_2) {
+			big_int_1.operator_assigment_plus(big_int_2);
+			big_int_1.sign = sign;
+			
+			swap(big_int_1);
+		}
+		else {
+			big_int_2.operator_assigment_plus(big_int_1);
+			big_int_2.sign = sign;
+			
+			swap(big_int_2);
+		}
 	}
 
 	return *this;
 }
 
 BigInt& BigInt::operator-=(const BigInt& big_int) {
-	if ((sign == big_int.sign) && sign) {
-		if (*this < big_int) {
-			sign = false;
-		}
+	BigInt big_int_1 = *this, big_int_2 = big_int;
+	big_int_1.sign = true, big_int_2.sign = true;
 
-		operator_assigment_minus(big_int);
+	if ((sign == big_int.sign) && sign) {
+		if (big_int_1 >= big_int_2) {
+			big_int_1.operator_assigment_minus(big_int_2);
+			big_int_1.sign = true;
+
+			swap(big_int_1);
+		}
+		else {
+			big_int_2.operator_assigment_minus(big_int_1);
+			big_int_2.sign = false;
+
+			swap(big_int_2);
+		}
 	}
 	else if ((sign == big_int.sign) && !sign) {
-		if (*this < big_int) {
-			sign = true;
-		}
+		if (big_int_1 >= big_int_2) {
+			big_int_1.operator_assigment_minus(big_int_2);
+			big_int_1.sign = false;
 
-		operator_assigment_minus(big_int);
+			swap(big_int_1);
+		}
+		else {
+			big_int_2.operator_assigment_minus(big_int_1);
+			big_int_2.sign = true;
+			
+			swap(big_int_2);
+		}
 	}
 	else {
-		operator_assigment_plus(big_int);
+		if (big_int_1 >= big_int_2) {
+			big_int_1.operator_assigment_plus(big_int_2);
+			big_int_1.sign = sign;
+			
+			swap(big_int_1);
+		}
+		else {
+			big_int_2.operator_assigment_plus(big_int_1);
+			big_int_2.sign = sign;
+
+			swap(big_int_2);
+		}
 	}
 	
 	return *this;
@@ -118,10 +175,25 @@ BigInt& BigInt::operator*=(const BigInt& big_int) {
 			sign = false;
 		}
 	}
+
 	return *this;
 }
 
 BigInt& BigInt::operator/=(const BigInt& big_int) {
+	if (sign == big_int.sign) {
+		operator_assigment_division(big_int);
+		sign = true;
+	}
+	else {
+		BigInt big_int_1 = *this, big_int_2 = big_int;
+		big_int_1.sign = true, big_int_2.sign = true;
+
+		big_int_1.operator_assigment_division(big_int_2);
+		big_int_1.sign = sign;
+
+		swap(big_int_1);
+	}
+
 	return *this;
 }
 
@@ -147,6 +219,14 @@ BigInt BigInt::operator--(int) {
 	--(*this);
 
 	return copy;
+}
+
+BigInt::operator bool() {
+	if ((size == 1) && (num_str[0] == '0')) {
+		return false;
+	}
+	
+	return true;
 }
 
 size_t BigInt::len() const {
@@ -204,12 +284,25 @@ void BigInt::swap(BigInt& big_int) {
 }
 
 BigInt& BigInt::multi10() {
-	char* new_str = new char[size + 2];
+	++size;
+	char* new_str = new char[size + 1];
+
+	strncpy(new_str, num_str, size - 1);
+	new_str[size - 1] = '0';
+	new_str[size] = '\0';
+
+	std::swap(num_str, new_str);
+	delete[] new_str;
+
+	return *this;
+}
+
+BigInt& BigInt::div10() {
+	--size;
+	char* new_str = new char[size + 1];
 
 	strncpy(new_str, num_str, size);
-	new_str[size] = '0';
-	new_str[size + 1] = '\0';
-	++size;
+	new_str[size] = '\0';
 
 	std::swap(num_str, new_str);
 	delete[] new_str;
@@ -218,26 +311,17 @@ BigInt& BigInt::multi10() {
 }
 
 BigInt& BigInt::operator_assigment_plus(const BigInt& big_int) {
-	size_t max_size = (size > big_int.size) ? (size) : (big_int.size);
-	size_t min_size = (size > big_int.size) ? (big_int.size) : (size);
-
-	char* result_str = new char[max_size + 2];
-	result_str[max_size + 1] = '\0';
+	char* result_str = new char[size + 2];
+	result_str[size + 1] = '\0';
 
 	short sum_symbol = 0, sum_remainder = 0;
 
-	for (long long int i = max_size - 1, j = min_size - 1; i >= 0; --i, --j) {
-		if ((j < 0) && (big_int.size == max_size)) {
-			sum_symbol = sum_remainder + (big_int.num_str[i] - '0');
-		}
-		else if ((j < 0) && (size == max_size)) {
+	for (long long int i = size - 1, j = big_int.size - 1; i >= 0; --i, --j) {
+		if (j < 0) {
 			sum_symbol = sum_remainder + (num_str[i] - '0');
 		}
-		else if (size == max_size) {
+		else {
 			sum_symbol = sum_remainder + (big_int.num_str[j] - '0') + (num_str[i] - '0');
-		}
-		else if (big_int.size == max_size) {
-			sum_symbol = sum_remainder + (big_int.num_str[i] - '0') + (num_str[j] - '0');
 		}
 
 		sum_remainder = sum_symbol / 10;
@@ -246,7 +330,9 @@ BigInt& BigInt::operator_assigment_plus(const BigInt& big_int) {
 		result_str[i + 1] = sum_symbol + '0';
 	}
 
-	size = max_size + 1;
+	++size;
+	result_str[0] = sum_remainder + '0';
+
 	std::swap(result_str, num_str);
 	cut();
 
@@ -255,52 +341,29 @@ BigInt& BigInt::operator_assigment_plus(const BigInt& big_int) {
 }
 
 BigInt& BigInt::operator_assigment_minus(const BigInt& big_int) {
-	size_t max_size = (size > big_int.size) ? (size) : (big_int.size);
-	size_t min_size = (size > big_int.size) ? (big_int.size) : (size);
+	char* result_str = new char[size + 2];
+	result_str[size + 1] = '\0';
 
-	char* result_str = new char[max_size + 2];
-	result_str[max_size + 1] = '\0';
+	int diff_deep = 0, diff_remainder = 0;
 
-	short diff_deep = 0, diff_remainder = 0;
-
-	if (max_size == size) {
-		for (long long int i = max_size - 1, j = min_size - 1; i >= 0; --i, --j) {
-			if (j < 0) {
-				diff_remainder = (num_str[i] - '0') - diff_deep;
-				diff_deep = 0;
-			}
-			else if (((num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep) >= 0) {
-				diff_remainder = (num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep;
-				diff_deep = 0;
-			}
-			else if (((num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep) < 0) {
-				++diff_deep;
-				diff_remainder = 10 + (num_str[i] - '0') - (big_int.num_str[j] - '0');
-			}
-
-			result_str[i + 1] = diff_remainder + '0';
+	for (long long int i = size - 1, j = big_int.size - 1; i >= 0; --i, --j) {
+		if (j < 0) {
+			diff_remainder = (num_str[i] - '0') - diff_deep;
+			diff_deep = 0;
 		}
-	}
-	else {
-		for (long long int i = max_size - 1, j = min_size - 1; i >= 0; --i, --j) {
-			if (j < 0) {
-				diff_remainder = (big_int.num_str[i] - '0') - diff_deep;
-				diff_deep = 0;
-			}
-			else if (((big_int.num_str[i] - '0') - (num_str[j] - '0') - diff_deep) >= 0) {
-				diff_remainder = (big_int.num_str[i] - '0') - (num_str[j] - '0') - diff_deep;
-				diff_deep = 0;
-			}
-			else if (((big_int.num_str[i] - '0') - (num_str[j] - '0') - diff_deep) < 0) {
-				++diff_deep;
-				diff_remainder = 10 + (big_int.num_str[i] - '0') - (num_str[j] - '0');
-			}
-
-			result_str[i + 1] = diff_remainder + '0';
+		else if (((num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep) >= 0) {
+			diff_remainder = (num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep;
+			diff_deep = 0;
 		}
+		else if (((num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep) < 0) {
+			diff_remainder = 10 + (num_str[i] - '0') - (big_int.num_str[j] - '0') - diff_deep;
+			diff_deep = 1;
+		}
+
+		result_str[i + 1] = diff_remainder + '0';
 	}
 
-	size = max_size + 1;
+	++size;
 
 	std::swap(result_str, num_str);
 	cut();
@@ -372,6 +435,82 @@ BigInt& BigInt::operator_assigment_multi(const BigInt& big_int) {
 	return *this;
 }
 
+BigInt& BigInt::operator_assigment_division(const BigInt& big_int) {
+	if (*this < big_int) {
+		delete[] num_str;
+
+		size = 1;
+		sign = true;
+		num_str = new char[2];
+		num_str[0] = '0';
+		num_str[1] = '\0';
+
+		return *this;
+	}
+
+	if (*this == big_int) {
+		delete[] num_str;
+
+		size = 1;
+		sign = true;
+		num_str = new char[2];
+		num_str[0] = '1';
+		num_str[1] = '\0';
+
+		return *this;
+	}
+
+	BigInt result = 0, div_remainder = 0, ZERO = 0;
+	size_t index_of_deep = 0;
+
+	for (size_t i = 0; i < size; ++i) {
+		if ((index_of_deep == 0) && ((BigInt(num_str[i]) + div_remainder - big_int) > ZERO)) {
+			BigInt j;
+			for (j = 1; (BigInt(num_str[i]) + div_remainder - (big_int * j)) > ZERO; ++j) {}
+			--j;
+
+			result += j;
+			result.multi10();
+			div_remainder = BigInt(num_str[i]) + div_remainder - big_int * j;
+			div_remainder.multi10();
+		}
+		else if ((index_of_deep == 0) && (BigInt(num_str[i] - '0') - big_int + div_remainder < ZERO)) {
+			++index_of_deep;
+		}
+		else if (index_of_deep != 0) {
+			BigInt res;
+			res.size = index_of_deep + 1;
+
+			delete res.num_str;
+			res.num_str = new char[res.size + 1];
+			res.num_str[res.size] = '\0';
+
+			strncpy(res.num_str, &(num_str[i]) - index_of_deep, res.size);
+
+			if (res - big_int + div_remainder > ZERO) {
+				BigInt j;
+				for (j = 1; (res + div_remainder - (big_int * j)) > ZERO; ++j) {}
+				--j;
+
+				result += j;
+				result.multi10();
+				index_of_deep = 0;
+
+				div_remainder = res + div_remainder - big_int * j;
+				div_remainder.multi10();
+			}
+			else {
+				++index_of_deep;
+			}
+		}
+	}
+
+	*this = result;
+	div10();
+
+	return *this;
+}
+
 std::ostream& operator<<(std::ostream& out, const BigInt& big_int) {
 	if (!big_int.sign) {
 		out << '-';
@@ -423,12 +562,18 @@ bool operator>(const BigInt& big_int_1, const BigInt& big_int_2) {
 			if ((big_int_1.num_str[i] > big_int_2.num_str[i]) && (big_int_1.sign)) {
 				return true;
 			}
+			else if ((big_int_1.num_str[i] < big_int_2.num_str[i]) && (big_int_1.sign)) {
+				return false;
+			}
 			else if ((big_int_1.num_str[i] < big_int_2.num_str[i]) && (!big_int_1.sign)) {
 				return true;
 			}
+			else if ((big_int_1.num_str[i] > big_int_2.num_str[i]) && (!big_int_1.sign)) {
+				return false;
+			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -437,11 +582,11 @@ bool operator<(const BigInt& big_int_1, const BigInt& big_int_2) {
 }
 
 bool operator>=(const BigInt& big_int_1, const BigInt& big_int_2) {
-	return !(big_int_1 < big_int_2);
+	return ((big_int_1 > big_int_2) || (big_int_1 == big_int_2));
 }
 
 bool operator<=(const BigInt& big_int_1, const BigInt& big_int_2) {
-	return !(big_int_1 > big_int_2);
+	return ((big_int_1 < big_int_2) || (big_int_1 == big_int_2));
 }
 
 BigInt operator+(const BigInt& big_int_1, const BigInt& big_int_2) {
@@ -462,5 +607,12 @@ BigInt operator*(const BigInt& big_int_1, const BigInt& big_int_2) {
 	BigInt result = big_int_1;
 	result *= big_int_2;
 	
+	return result;
+}
+
+BigInt operator/(const BigInt& big_int_1, const BigInt& big_int_2) {
+	BigInt result = big_int_1;
+	result /= big_int_2;
+
 	return result;
 }

@@ -2,237 +2,126 @@
 #include "../inc/BigInt.h"
 
 int main() {
-	/*
-	BigInt a1 = "123456789012345";
-	std::cout << a1 << ", size = " << a1.len() << std::endl;
+	BigInt t1 = 1495;
+	BigInt t2 = 12;
 
-	BigInt ll = 9'223'372'036'854'775'804;
-	std::cout << ll << ", size = " << ll.len() << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	BigInt a2 = a1;
-	std::cout << a2 << ", size = " << a2.len() << std::endl;
+	t1 = 1495;
+	t2 = 1495;
 
-	a2 = ll;
-	std::cout << a2 << ", size = " << a2.len() << std::endl;
-	*/
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	/*
-	BigInt b1 = "11";
-	BigInt b2 = 10;
+	t1 = 12;
+	t2 = 1495;
 
-	std::cout << "b1 = " << b1 << std::endl;
-	std::cout << "b2 = " << b2 << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	b2 += b1;
+	t1 = 8;
+	t2 = 2;
 
-	std::cout << std::endl << "b1 = " << b1 << std::endl;
-	std::cout << "b2 = " << b2 << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	const BigInt b3 = 0;
-	std::cout << std::endl << "b3 + 2 = " << b3 + 2 << std::endl;
+	t1 = 8;
+	t2 = 8;
 
-	std::cout << "b1 < b2 = " << (b1 < b2) << std::endl; 
-	std::cout << "b1 > b2 = " << (b1 > b2) << std::endl;
-	std::cout << "b1 <= b2 = " << (b1 <= b2) << std::endl;
-	std::cout << "b1 >= b2 = " << (b1 >= b2) << std::endl;
-	std::cout << "b1 == b2 = " << (b1 == b2) << std::endl;
-	std::cout << "b1 != b2 = " << (b1 != b2) << std::endl;
-	*/
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	/*
-	BigInt c1 = "23";
-	BigInt c2 = 1204;
+	t1 = 2;
+	t2 = 8;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	t1 = 10000;
+	t2 = 235;
 
-	c1 = "-23";
-	c2 = -1204;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	t1 = 235;
+	t2 = 10000;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	c1 = "1204";
-	c2 = 23;
+	t1 = 10000;
+	t2 = 10000;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	t1 = "123456789123456789123456789";
+	t2 = 125;
 
-	c1 = "-1204";
-	c2 = -23;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 + t2 = " << t1 + t2 << std::endl << std::endl;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	t1 = "123456789123456789123456789";
+	t2 = 125;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 - t2 = " << t1 - t2 << std::endl << std::endl;
 
-	c1 = "-1204";
-	c2 = 23;
+	t1 = "123456789123456789123456789";
+	t2 = 125;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 * t2 = " << t1 * t2 << std::endl << std::endl;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	t1 = "123456789123456789123456789";
+	t2 = 125;
 
-	c1 = "1204";
-	c2 = -23;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	std::cout << "t1 = " << ++t1 << std::endl << std::endl;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	t1 = "-123456789123456789123456789";
+	t2 = 125;
 
-	c1 = "-23";
-	c2 = 1204;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 + t2 = " << t1 + t2 << std::endl << std::endl;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	t1 = "-123456789123456789123456789";
+	t2 = 125;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 - t2 = " << t1 - t2 << std::endl << std::endl;
 
-	c1 = "23";
-	c2 = -1204;
+	t1 = "-123456789123456789123456789";
+	t2 = 125;
 
-	std::cout << "c1 = " << c1 << std::endl;
-	std::cout << "c2 = " << c2 << std::endl << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 * t2 = " << t1 * t2 << std::endl << std::endl;
 
-	std::cout << std::endl << "c1 + c2 = " << c1 + c2 << std::endl;
-	std::cout << std::endl << "c2 + c1 = " << c2 + c1 << std::endl;
-	std::cout << std::endl << "c1 - c2 = " << c1 - c2 << std::endl;
-	std::cout << std::endl << "c2 - c1 = " << c2 - c1 << std::endl << std::endl;
+	t1 = "-123456789123456789123456789";
+	t2 = 125;
 
-	std::cout << "++c1 = " << ++c1 << std::endl;
-	std::cout << "c1++ = " << c1++ << std::endl;
-	std::cout << "c1 = " << c1 << std::endl;
+	std::cout << "t1 = " << t1 << std::endl;
+	std::cout << "t2 = " << t2 << std::endl;
+	std::cout << "t1 / t2 = " << t1 / t2 << std::endl << std::endl;
 
-	std::cout << std::endl << "--c2 = " << --c2 << std::endl;
-	std::cout << "c2-- = " << c2-- << std::endl;
-	std::cout << "c2 = " << c2 << std::endl;
-
-	BigInt m1 = 2132;
-	BigInt m2 = 123;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl << std::endl;
-
-	m1 *= m2;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl << std::endl;
-	*/
-
-	BigInt m1 = 999;
-	BigInt m2 = 999;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = -1;
-	m2 = 1;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = -1;
-	m2 = 0;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = -1000;
-	m2 = -11;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = 113;
-	m2 = -1;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = 0;
-	m2 = 0;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = 1;
-	m2 = 1000000;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = 0;
-	m2 = 1331;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = 111111;
-	m2 = 2;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = 12345;
-	m2 = 999;
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
-
-	m1 = "123456789123456789";
-	m2 = "123456789123456789";
-
-	std::cout << "m1 = " << m1 << std::endl;
-	std::cout << "m2 = " << m2 << std::endl;
-
-	std::cout << "m1 * m2 = " << m1 * m2 << std::endl << std::endl;
+	std::cout << "t1 = " << ++t1 << std::endl << std::endl;
 }

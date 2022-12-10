@@ -11,6 +11,7 @@ public:
 	~BigInt();
 
 	BigInt(int num);
+	BigInt(char ch);
 	BigInt(long long int num);
 	BigInt(const char* num_str);
 
@@ -23,6 +24,8 @@ public:
 	BigInt& operator--();
 	BigInt operator++(int);
 	BigInt operator--(int);
+
+	operator bool();
 
 	size_t len() const;
 
@@ -38,6 +41,7 @@ public:
 	friend BigInt operator+(const BigInt& big_int_1, const BigInt& big_int_2);
 	friend BigInt operator-(const BigInt& big_int_1, const BigInt& big_int_2);
 	friend BigInt operator*(const BigInt& big_int_1, const BigInt& big_int_2);
+	friend BigInt operator/(const BigInt& big_int_1, const BigInt& big_int_2);
 private:
 	mutable bool sign;
 	mutable size_t size;
@@ -46,10 +50,12 @@ private:
 	void cut() const;
 	void swap(BigInt& big_int);
 	BigInt& multi10();
+	BigInt& div10();
 
 	BigInt& operator_assigment_plus(const BigInt& big_int);
 	BigInt& operator_assigment_minus(const BigInt& big_int);
 	BigInt& operator_assigment_multi(const BigInt& big_int);
+	BigInt& operator_assigment_division(const BigInt& big_int);
 };
 
 #endif
