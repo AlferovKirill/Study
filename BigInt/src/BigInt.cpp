@@ -64,7 +64,7 @@ BigInt& BigInt::operator+=(const BigInt& big_int) {
 	BigInt big_int_1 = *this, big_int_2 = big_int;
 	big_int_1.sign = true, big_int_2.sign = true;
 
-	if ((sign != big_int.sign) && sign) {
+	if (sign && !big_int.sign) {
 		if (big_int_1 >= big_int_2) {
 			big_int_1.operator_assigment_minus(big_int_2);
 			big_int_1.sign = true;
@@ -78,7 +78,7 @@ BigInt& BigInt::operator+=(const BigInt& big_int) {
 			swap(big_int_2);
 		}
 	}
-	else if ((sign != big_int.sign) && !sign) {
+	else if (!sign && big_int.sign) {
 		if (big_int_1 >= big_int_2) {
 			big_int_1.operator_assigment_minus(big_int_2);
 			big_int_1.sign = false;
@@ -86,7 +86,7 @@ BigInt& BigInt::operator+=(const BigInt& big_int) {
 			swap(big_int_1);
 		}
 		else {
-			big_int_2.operator_assigment_minus(big_int_2);
+			big_int_2.operator_assigment_minus(big_int_1);
 			big_int_2.sign = true;
 			
 			swap(big_int_2);
@@ -105,6 +105,10 @@ BigInt& BigInt::operator+=(const BigInt& big_int) {
 			
 			swap(big_int_2);
 		}
+	}
+
+	if ((num_str[0] == '0') && (size == 1)) {
+		sign = true;
 	}
 
 	return *this;
@@ -156,6 +160,10 @@ BigInt& BigInt::operator-=(const BigInt& big_int) {
 			swap(big_int_2);
 		}
 	}
+
+	if ((num_str[0] == '0') && (size == 1)) {
+		sign = true;
+	}
 	
 	return *this;
 }
@@ -176,22 +184,65 @@ BigInt& BigInt::operator*=(const BigInt& big_int) {
 		}
 	}
 
+	if ((num_str[0] == '0') && (size == 1)) {
+		sign = true;
+	}
+
 	return *this;
 }
 
 BigInt& BigInt::operator/=(const BigInt& big_int) {
-	if (sign == big_int.sign) {
+	if (sign && big_int.sign) {
 		operator_assigment_division(big_int);
 		sign = true;
+	}
+	else if (!sign && !big_int.sign) {
+		BigInt big_int_1 = *this, big_int_2 = big_int;
+		big_int_1.sign = true, big_int_2.sign = true;
+
+		big_int_1.operator_assigment_division(big_int_2);
+		swap(big_int_1);
 	}
 	else {
 		BigInt big_int_1 = *this, big_int_2 = big_int;
 		big_int_1.sign = true, big_int_2.sign = true;
 
 		big_int_1.operator_assigment_division(big_int_2);
-		big_int_1.sign = sign;
-
+		big_int_1.sign = false;
 		swap(big_int_1);
+	}
+
+	if ((num_str[0] == '0') && (size == 1)) {
+		sign = true;
+	}
+
+	return *this;
+}
+
+BigInt& BigInt::operator%=(const BigInt& big_int) {
+	if (sign && big_int.sign) {
+		operator_assigment_remainder(big_int);
+		sign = true;
+	}
+	else if (!sign && !big_int.sign) {
+		BigInt big_int_1 = *this, big_int_2 = big_int;
+		big_int_1.sign = true, big_int_2.sign = true;
+
+		big_int_1.operator_assigment_remainder(big_int_2);
+		big_int_1.sign = false;
+		swap(big_int_1);
+	}
+	else {
+		BigInt big_int_1 = *this, big_int_2 = big_int;
+		big_int_1.sign = true, big_int_2.sign = true;
+
+		big_int_1.operator_assigment_remainder(big_int_2);
+		big_int_1.sign = sign;
+		swap(big_int_1);
+	}
+
+	if ((num_str[0] == '0') && (size == 1)) {
+		sign = true;
 	}
 
 	return *this;
@@ -310,7 +361,7 @@ BigInt& BigInt::div10() {
 	return *this;
 }
 
-BigInt& BigInt::operator_assigment_plus(const BigInt& big_int) {
+void BigInt::operator_assigment_plus(const BigInt& big_int) {
 	char* result_str = new char[size + 2];
 	result_str[size + 1] = '\0';
 
@@ -337,17 +388,19 @@ BigInt& BigInt::operator_assigment_plus(const BigInt& big_int) {
 	cut();
 
 	delete[] result_str;
-	return *this;
 }
 
-BigInt& BigInt::operator_assigment_minus(const BigInt& big_int) {
+void BigInt::operator_assigment_minus(const BigInt& big_int) {
 	char* result_str = new char[size + 2];
 	result_str[size + 1] = '\0';
 
 	int diff_deep = 0, diff_remainder = 0;
 
 	for (long long int i = size - 1, j = big_int.size - 1; i >= 0; --i, --j) {
-		if (j < 0) {
+		if ((j < 0) && ((num_str[i] - '0') - diff_deep < 0)) {
+			diff_remainder = 9;
+		}
+		else if ((j < 0) && ((num_str[i] - '0') - diff_deep > 0)) {
 			diff_remainder = (num_str[i] - '0') - diff_deep;
 			diff_deep = 0;
 		}
@@ -369,10 +422,9 @@ BigInt& BigInt::operator_assigment_minus(const BigInt& big_int) {
 	cut();
 
 	delete[] result_str;
-	return *this;
 }
 
-BigInt& BigInt::operator_assigment_multi(const BigInt& big_int) {
+void BigInt::operator_assigment_multi(const BigInt& big_int) {
 	BigInt result_of_multi = 0, temp = 0;
 	short multi_symbol = 0, multi_remainder = 0;
 	char* interim_result;
@@ -431,11 +483,10 @@ BigInt& BigInt::operator_assigment_multi(const BigInt& big_int) {
 	}
 
 	*this = result_of_multi;
-
-	return *this;
+	delete[] interim_result;
 }
 
-BigInt& BigInt::operator_assigment_division(const BigInt& big_int) {
+void BigInt::operator_assigment_division(const BigInt& big_int) {
 	if (*this < big_int) {
 		delete[] num_str;
 
@@ -445,7 +496,7 @@ BigInt& BigInt::operator_assigment_division(const BigInt& big_int) {
 		num_str[0] = '0';
 		num_str[1] = '\0';
 
-		return *this;
+		return;
 	}
 
 	if (*this == big_int) {
@@ -457,16 +508,126 @@ BigInt& BigInt::operator_assigment_division(const BigInt& big_int) {
 		num_str[0] = '1';
 		num_str[1] = '\0';
 
-		return *this;
+		return;
+	}
+
+	if ((big_int.size == 1) && (big_int.num_str[0] == '1')) {
+		return;
 	}
 
 	BigInt result = 0, div_remainder = 0, ZERO = 0;
 	size_t index_of_deep = 0;
 
 	for (size_t i = 0; i < size; ++i) {
-		if ((index_of_deep == 0) && ((BigInt(num_str[i]) + div_remainder - big_int) > ZERO)) {
+		if ((index_of_deep == 0) && ((BigInt(num_str[i]) + div_remainder - big_int) >= ZERO)) {
+
+			std::cout << "1" << std::endl;
+			std::cout << "result = " << result << std::endl;
+			std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
+
 			BigInt j;
-			for (j = 1; (BigInt(num_str[i]) + div_remainder - (big_int * j)) > ZERO; ++j) {}
+			for (j = 1; (BigInt(num_str[i]) + div_remainder - (big_int * j)) >= ZERO; ++j) {}
+			--j;
+
+			result += j;
+			result.multi10();
+			div_remainder = BigInt(num_str[i]) + div_remainder - big_int * j;
+			div_remainder.multi10();
+		}
+		else if ((index_of_deep == 0) && (BigInt(num_str[i] - '0') - big_int + div_remainder < ZERO)) {
+
+			std::cout << "2" << std::endl;
+			std::cout << "result = " << result << std::endl;
+			std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
+
+			++index_of_deep;
+		}
+		else if (index_of_deep != 0) {
+
+			std::cout << "3" << std::endl;
+			std::cout << "result = " << result << std::endl;
+			std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
+
+			BigInt res;
+			res.size = index_of_deep + 1;
+
+			delete res.num_str;
+			res.num_str = new char[res.size + 1];
+			res.num_str[res.size] = '\0';
+
+			strncpy(res.num_str, &(num_str[i]) - index_of_deep, res.size);
+
+			if (res - big_int + div_remainder >= ZERO) {
+				BigInt j;
+				for (j = 1; (res + div_remainder - (big_int * j)) >= ZERO; ++j) {}
+				--j;
+
+				result += j;
+				result.multi10();
+				index_of_deep = 0;
+
+				div_remainder = res + div_remainder - big_int * j;
+				div_remainder.multi10();
+			}
+			else {
+				++index_of_deep;
+			}
+		}
+	}
+
+	std::cout << "result = " << result << std::endl;
+	std::cout << "div_remainder = " << div_remainder << std::endl;
+
+	result.div10();
+	div_remainder.div10();
+
+	if (div_remainder == big_int) {
+		++result;
+	}
+
+	std::cout << "result = " << result << std::endl;
+	std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
+
+	*this = result;
+}
+
+void BigInt::operator_assigment_remainder(const BigInt& big_int) {
+	if (*this == big_int) {
+		delete[] num_str;
+
+		size = 1;
+		sign = true;
+		num_str = new char[2];
+		num_str[0] = '0';
+		num_str[1] = '\0';
+
+		return;
+	}
+
+	if (*this < big_int) {
+		return;
+	}
+
+
+	if ((big_int.size == 1) && (big_int.num_str[0] == '1')) {
+		delete[] num_str;
+
+		size = 1;
+		sign = true;
+		num_str = new char[2];
+		num_str[0] = '0';
+		num_str[1] = '\0';
+
+		return;
+	}
+
+	BigInt result = 0, div_remainder = 0, ZERO = 0;
+	size_t index_of_deep = 0;
+
+	for (size_t i = 0; i < size; ++i) {
+		if ((index_of_deep == 0) && ((BigInt(num_str[i]) + div_remainder - big_int) >= ZERO)) {
+			BigInt j;
+			for (j = 1; (BigInt(num_str[i]) + div_remainder - (big_int * j)) >= ZERO; ++j) {}
 			--j;
 
 			result += j;
@@ -487,9 +648,9 @@ BigInt& BigInt::operator_assigment_division(const BigInt& big_int) {
 
 			strncpy(res.num_str, &(num_str[i]) - index_of_deep, res.size);
 
-			if (res - big_int + div_remainder > ZERO) {
+			if (res - big_int + div_remainder >= ZERO) {
 				BigInt j;
-				for (j = 1; (res + div_remainder - (big_int * j)) > ZERO; ++j) {}
+				for (j = 1; (res + div_remainder - (big_int * j)) >= ZERO; ++j) {}
 				--j;
 
 				result += j;
@@ -505,10 +666,14 @@ BigInt& BigInt::operator_assigment_division(const BigInt& big_int) {
 		}
 	}
 
-	*this = result;
-	div10();
+	result.div10();
+	div_remainder.div10();
 
-	return *this;
+	if (div_remainder == big_int) {
+		div_remainder = 0;
+	}
+
+	*this = div_remainder;
 }
 
 std::ostream& operator<<(std::ostream& out, const BigInt& big_int) {
@@ -613,6 +778,13 @@ BigInt operator*(const BigInt& big_int_1, const BigInt& big_int_2) {
 BigInt operator/(const BigInt& big_int_1, const BigInt& big_int_2) {
 	BigInt result = big_int_1;
 	result /= big_int_2;
+
+	return result;
+}
+
+BigInt operator%(const BigInt& big_int_1, const BigInt& big_int_2) {
+	BigInt result = big_int_1;
+	result %= big_int_2;
 
 	return result;
 }
