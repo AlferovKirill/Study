@@ -1,5 +1,5 @@
 <h1 align="center">String</h1>
-<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/README.RU.md">Русский</a></h4>
+<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/String/README.RU.md">Русский</a></h4>
 
 <p>String - my implementation of class string. Decomposed. All files:</p>
 <ul>
