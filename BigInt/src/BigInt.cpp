@@ -118,7 +118,7 @@ BigInt& BigInt::operator-=(const BigInt& big_int) {
 	BigInt big_int_1 = *this, big_int_2 = big_int;
 	big_int_1.sign = true, big_int_2.sign = true;
 
-	if ((sign == big_int.sign) && sign) {
+	if (sign && big_int.sign) {
 		if (big_int_1 >= big_int_2) {
 			big_int_1.operator_assigment_minus(big_int_2);
 			big_int_1.sign = true;
@@ -132,7 +132,7 @@ BigInt& BigInt::operator-=(const BigInt& big_int) {
 			swap(big_int_2);
 		}
 	}
-	else if ((sign == big_int.sign) && !sign) {
+	else if (!sign && !big_int.sign) {
 		if (big_int_1 >= big_int_2) {
 			big_int_1.operator_assigment_minus(big_int_2);
 			big_int_1.sign = false;
@@ -391,8 +391,12 @@ void BigInt::operator_assigment_plus(const BigInt& big_int) {
 }
 
 void BigInt::operator_assigment_minus(const BigInt& big_int) {
-	char* result_str = new char[size + 2];
-	result_str[size + 1] = '\0';
+	if ((big_int.size == 1) && (big_int.num_str[0] == '0')) {
+		return;
+	}
+
+	char* result_str = new char[size + 1];
+	result_str[size] = '\0';
 
 	int diff_deep = 0, diff_remainder = 0;
 
@@ -400,7 +404,7 @@ void BigInt::operator_assigment_minus(const BigInt& big_int) {
 		if ((j < 0) && ((num_str[i] - '0') - diff_deep < 0)) {
 			diff_remainder = 9;
 		}
-		else if ((j < 0) && ((num_str[i] - '0') - diff_deep > 0)) {
+		else if ((j < 0) && ((num_str[i] - '0') - diff_deep >= 0)) {
 			diff_remainder = (num_str[i] - '0') - diff_deep;
 			diff_deep = 0;
 		}
@@ -515,78 +519,84 @@ void BigInt::operator_assigment_division(const BigInt& big_int) {
 		return;
 	}
 
+	if ((big_int.size == 1) && (big_int.num_str[0] == '0')) {
+		throw "Error! Devision on zero!";
+	}
+
 	BigInt result = 0, div_remainder = 0, ZERO = 0;
 	size_t index_of_deep = 0;
 
 	for (size_t i = 0; i < size; ++i) {
-		if ((index_of_deep == 0) && ((BigInt(num_str[i]) + div_remainder - big_int) >= ZERO)) {
+		BigInt bi_num = num_str[i];
 
-			std::cout << "1" << std::endl;
-			std::cout << "result = " << result << std::endl;
-			std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
-
+		if ((index_of_deep == 0) && ((bi_num + div_remainder - big_int) >= ZERO)) {
 			BigInt j;
-			for (j = 1; (BigInt(num_str[i]) + div_remainder - (big_int * j)) >= ZERO; ++j) {}
+			for (j = 1; (bi_num + div_remainder - (big_int * j)) >= ZERO; ++j) {}
 			--j;
 
 			result += j;
 			result.multi10();
-			div_remainder = BigInt(num_str[i]) + div_remainder - big_int * j;
-			div_remainder.multi10();
-		}
-		else if ((index_of_deep == 0) && (BigInt(num_str[i] - '0') - big_int + div_remainder < ZERO)) {
 
-			std::cout << "2" << std::endl;
-			std::cout << "result = " << result << std::endl;
-			std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
+			div_remainder = bi_num + div_remainder - big_int * j;
+
+			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+				div_remainder.multi10();
+			}
+		}
+		else if ((index_of_deep == 0) && (bi_num - big_int + div_remainder < ZERO)) {
+			if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
+				result.multi10();
+			}
+
+			div_remainder += bi_num;
+
+			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+				div_remainder.multi10();
+			}
 
 			++index_of_deep;
 		}
 		else if (index_of_deep != 0) {
-
-			std::cout << "3" << std::endl;
-			std::cout << "result = " << result << std::endl;
-			std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
-
-			BigInt res;
-			res.size = index_of_deep + 1;
-
-			delete res.num_str;
-			res.num_str = new char[res.size + 1];
-			res.num_str[res.size] = '\0';
-
-			strncpy(res.num_str, &(num_str[i]) - index_of_deep, res.size);
-
-			if (res - big_int + div_remainder >= ZERO) {
+			if (bi_num + div_remainder - big_int >= ZERO) {
 				BigInt j;
-				for (j = 1; (res + div_remainder - (big_int * j)) >= ZERO; ++j) {}
+				for (j = 1; (bi_num + div_remainder - (big_int * j)) >= ZERO; ++j) {}
 				--j;
 
 				result += j;
 				result.multi10();
 				index_of_deep = 0;
 
-				div_remainder = res + div_remainder - big_int * j;
-				div_remainder.multi10();
+				div_remainder = (bi_num + div_remainder) - (big_int * j);
+
+				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+					div_remainder.multi10();
+				}
 			}
 			else {
+				if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
+					result.multi10();
+				}
+
+				div_remainder += bi_num;
+
+				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+					div_remainder.multi10();
+				}
+
 				++index_of_deep;
 			}
 		}
 	}
 
-	std::cout << "result = " << result << std::endl;
-	std::cout << "div_remainder = " << div_remainder << std::endl;
-
 	result.div10();
-	div_remainder.div10();
+
+	if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+		div_remainder.div10();
+	}
 
 	if (div_remainder == big_int) {
 		++result;
 	}
-
-	std::cout << "result = " << result << std::endl;
-	std::cout << "div_remainder = " << div_remainder << std::endl << std::endl;
 
 	*this = result;
 }
@@ -621,56 +631,83 @@ void BigInt::operator_assigment_remainder(const BigInt& big_int) {
 		return;
 	}
 
+	if ((big_int.size == 1) && (big_int.num_str[0] == '0')) {
+		throw "Error! Devision on zero!";
+	}
+
 	BigInt result = 0, div_remainder = 0, ZERO = 0;
 	size_t index_of_deep = 0;
 
 	for (size_t i = 0; i < size; ++i) {
-		if ((index_of_deep == 0) && ((BigInt(num_str[i]) + div_remainder - big_int) >= ZERO)) {
+		BigInt bi_num = num_str[i];
+
+		if ((index_of_deep == 0) && ((bi_num + div_remainder - big_int) >= ZERO)) {
 			BigInt j;
-			for (j = 1; (BigInt(num_str[i]) + div_remainder - (big_int * j)) >= ZERO; ++j) {}
+			for (j = 1; (bi_num + div_remainder - (big_int * j)) >= ZERO; ++j) {}
 			--j;
 
 			result += j;
 			result.multi10();
-			div_remainder = BigInt(num_str[i]) + div_remainder - big_int * j;
-			div_remainder.multi10();
+
+			div_remainder = bi_num + div_remainder - big_int * j;
+
+			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+				div_remainder.multi10();
+			}
 		}
-		else if ((index_of_deep == 0) && (BigInt(num_str[i] - '0') - big_int + div_remainder < ZERO)) {
+		else if ((index_of_deep == 0) && (bi_num - big_int + div_remainder < ZERO)) {
+			if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
+				result.multi10();
+			}
+
+			div_remainder += bi_num;
+
+			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+				div_remainder.multi10();
+			}
+
 			++index_of_deep;
 		}
 		else if (index_of_deep != 0) {
-			BigInt res;
-			res.size = index_of_deep + 1;
-
-			delete res.num_str;
-			res.num_str = new char[res.size + 1];
-			res.num_str[res.size] = '\0';
-
-			strncpy(res.num_str, &(num_str[i]) - index_of_deep, res.size);
-
-			if (res - big_int + div_remainder >= ZERO) {
+			if (bi_num + div_remainder - big_int >= ZERO) {
 				BigInt j;
-				for (j = 1; (res + div_remainder - (big_int * j)) >= ZERO; ++j) {}
+				for (j = 1; (bi_num + div_remainder - (big_int * j)) >= ZERO; ++j) {}
 				--j;
 
 				result += j;
 				result.multi10();
 				index_of_deep = 0;
 
-				div_remainder = res + div_remainder - big_int * j;
-				div_remainder.multi10();
+				div_remainder = (bi_num + div_remainder) - (big_int * j);
+
+				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+					div_remainder.multi10();
+				}
 			}
 			else {
+				if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
+					result.multi10();
+				}
+
+				div_remainder += bi_num;
+
+				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+					div_remainder.multi10();
+				}
+
 				++index_of_deep;
 			}
 		}
 	}
 
 	result.div10();
-	div_remainder.div10();
+
+	if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
+		div_remainder.div10();
+	}
 
 	if (div_remainder == big_int) {
-		div_remainder = 0;
+		++result;
 	}
 
 	*this = div_remainder;
@@ -683,6 +720,10 @@ std::ostream& operator<<(std::ostream& out, const BigInt& big_int) {
 
 	out << big_int.num_str;
 	return out;
+}
+
+std::istream& operator>>(std::istream& cin, BigInt& big_int) {
+	return cin;
 }
 
 bool operator==(const BigInt& big_int_1, const BigInt& big_int_2) {

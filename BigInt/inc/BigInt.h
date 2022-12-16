@@ -31,6 +31,7 @@ public:
 	size_t len() const;
 
 	friend std::ostream& operator<<(std::ostream& out, const BigInt& big_int);
+	friend std::istream& operator>>(std::istream& cin, BigInt& big_int);
 
 	friend bool operator==(const BigInt& big_int_1, const BigInt& big_int_2);
 	friend bool operator!=(const BigInt& big_int_1, const BigInt& big_int_2);
