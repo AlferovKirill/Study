@@ -1,4 +1,4 @@
-#include "../inc/string.h"
+#include "../inc/String.h"
 #include <iostream>
 
 int main() {

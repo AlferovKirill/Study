@@ -2,4 +2,4 @@
 
 project ("String")
 
-add_executable (String "src/string.cpp" "src/test.cpp" "inc/string.h")
+add_executable (String  "src/String.cpp" "src/test.cpp" "inc/String.h")

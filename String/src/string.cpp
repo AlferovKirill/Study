@@ -1,4 +1,4 @@
-#include "../inc/string.h"
+#include "../inc/String.h"
 
 String::String() : size(1), str(new char('\0')) {}
 
