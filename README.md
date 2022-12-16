@@ -5,16 +5,16 @@
 
 <p>1. String - my implementation of class string. Decomposed. All files:</p>
 <ul>
-  <li>src/string.cpp - implementation file with the definition of all class's functions.</li>
-  <li>inc/string.h - header file with the declaration of the class and all necessary functions.</li>
+  <li>src/String.cpp - implementation file with the definition of all class's functions.</li>
+  <li>inc/String.h - header file with the declaration of the class and all necessary functions.</li>
   <li>src/test.cpp - test file.</li>
   <li>CMakeLists.txt - build file.</li>
 </ul>
 
 <p>2. BigInt - my implementation of a class big integers. Decomposed. All files:</p>
 <ul>
-  <li>src/bigint.cpp - implementation file with the definition of all class's functions.</li>
-  <li>inc/bigint.h - header file with the declaration of the class and all necessary functions.</li>
+  <li>src/BigInt.cpp - implementation file with the definition of all class's functions.</li>
+  <li>inc/BigInt.h - header file with the declaration of the class and all necessary functions.</li>
   <li>src/test.cpp - test file.</li>
   <li>CMakeLists.txt - build file.</li>
 </ul>
