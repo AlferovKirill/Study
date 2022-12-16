@@ -1,5 +1,5 @@
 <h1 align="center">Study</h1>
-<h4>На других языках: <a href="https://github.com/AlferovKirill/Study/blob/main/README.md">English</a></h4>
+<h4>На других языках: <a href="https://github.com/AlferovKirill/Study/blob/main/String/README.md">English</a></h4>
 
 <p>String - моя реализация класса строк. Всё декомпозировано. Файлы:</p>
 <ul>
