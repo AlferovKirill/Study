@@ -1,9 +1,6 @@
-<h1 align="center">Study</h1>
-<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/README.RU.md">Русский</a></h4>
+<h1 align="center">String</h1>
 
-<p>This repository contains all of the mini-projects that I did to assimilate the material I have learned by pluses.</p>
-
-<p>1. String - my implementation of class string. Decomposed. All files:</p>
+<p>String - my implementation of class string. Decomposed. All files:</p>
 <ul>
   <li>src/String.cpp - implementation file with the definition of all class's functions.</li>
   <li>inc/String.h - header file with the declaration of the class and all necessary functions.</li>
