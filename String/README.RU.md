@@ -8,3 +8,5 @@
   <li>src/test.cpp - файлик с тестами.</li>
   <li>CMakeLists.txt - файл сборки.</li>
 </ul>
+
+<h1 align="center">Test</h1>
