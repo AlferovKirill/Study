@@ -1,4 +1,4 @@
-<h1 align="center">Study</h1>
+<h1 align="center">String</h1>
 <h4>На других языках: <a href="https://github.com/AlferovKirill/Study/blob/main/String/README.md">English</a></h4>
 
 <p align="justify">String - моя реализация класса строк на базе const char*. Для работы с сишными строками использовались стандартные же сишные операторы. Также добавлен конструктор от списка инициализаций для возможности задания строки через фигурные скобки. Всё декомпозировано. Файлы:</p>
