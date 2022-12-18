@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main() {
-	BigInt a1 = "12421354125464123", a2 = 676544;
+	BigInt a1 = "987654321987654321", a2 = 111;
 
 	std::cout << "a1 = " << a1 << "\na2 = " << a2 << std::endl << std::endl;
 

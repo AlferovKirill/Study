@@ -34,17 +34,8 @@ public:
 	friend std::istream& operator>>(std::istream& cin, BigInt& big_int);
 
 	friend bool operator==(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend bool operator!=(const BigInt& big_int_1, const BigInt& big_int_2);
 	friend bool operator>(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend bool operator<(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend bool operator>=(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend bool operator<=(const BigInt& big_int_1, const BigInt& big_int_2);
 
-	friend BigInt operator+(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend BigInt operator-(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend BigInt operator*(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend BigInt operator/(const BigInt& big_int_1, const BigInt& big_int_2);
-	friend BigInt operator%(const BigInt& big_int_1, const BigInt& big_int_2);
 private:
 	mutable bool sign;
 	mutable size_t size;
@@ -61,5 +52,16 @@ private:
 	void operator_assigment_division(const BigInt& big_int);
 	void operator_assigment_remainder(const BigInt& big_int);
 };
+
+bool operator!=(const BigInt& big_int_1, const BigInt& big_int_2);
+bool operator<(const BigInt& big_int_1, const BigInt& big_int_2);
+bool operator>=(const BigInt& big_int_1, const BigInt& big_int_2);
+bool operator<=(const BigInt& big_int_1, const BigInt& big_int_2);
+
+BigInt operator+(const BigInt& big_int_1, const BigInt& big_int_2);
+BigInt operator-(const BigInt& big_int_1, const BigInt& big_int_2);
+BigInt operator*(const BigInt& big_int_1, const BigInt& big_int_2);
+BigInt operator/(const BigInt& big_int_1, const BigInt& big_int_2);
+BigInt operator%(const BigInt& big_int_1, const BigInt& big_int_2);
 
 #endif
