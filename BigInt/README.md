@@ -1,4 +1,4 @@
-<h1 align="center">Study</h1>
+<h1 align="center">BigInt</h1>
 <h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/README.RU.md">Русский</a></h4>
 
 <p>This repository contains all of the mini-projects that I did to assimilate the material I have learned by pluses.</p>
