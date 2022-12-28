@@ -1,11 +1,11 @@
 <h1 align="center">BigInt</h1>
 <h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/BigInt/README.RU.md">Русский</a></h4>
 
-<p align="justify">BigInt is my implementation of a class of big numbers based on const char* (C-style strings). That is, the number is stored as a string and all operations on it happen as a result of manipulation with it.</p>
+<p align="justify">BigInt - my implementation of a class big integers based on const char* (C-style strings). This means that the number is stored as a c-string, and all operations on it are done by manipulating it.</p>
 
-<p align="justify">To implement arithmetic operations ("+", "-", "*", "/" and "%") standard "school algorithms" in the form of addition, subtraction, etc. in columns were used. Since the use of more complex and efficient algorithms was inexpedient, because it was necessary to spend much more time to learn them than to write a class of large numbers.</p>
+<p align="justify">For implementetion arithmetic operations ("+", "-", "*", "/" and "%") were used standard "school algorithms" in the form of addition, subtraction and etc in columns. Because it was unreasonable to use more difficult and efficient algorithms, because it would take much more time to learn them than writing a class of large numbers.</p>
 
-<p align="justify">I would be very happy if someone would be interested and help me to implement these algorithms in the conditions of this class with practical advice on finding appropriate literature and tutorials.</p>
+<p align="justify">I would be very happy if someone would be interested and help me to implement these algorithms in this class with practical advice on searching for relevant literature and textbooks.</p>
 
 <p align="justify">Everything is decomposed. Files:</p>
 
