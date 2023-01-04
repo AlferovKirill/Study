@@ -3,7 +3,7 @@
 
 <p align="justify">BigInt - my implementation of a class big integers based on const char* (C-style strings). This means that the number is stored as a C-string, and all operations on it are done by manipulating it.</p>
 
-<p align="justify">For implementetion arithmetic operations ("+", "-", "*", "/" and "%") were used standard "school algorithms" in the form of addition, subtraction and etc in columns. Because it was unreasonable to use more difficult and efficient algorithms, because it would take much more time to learn them than writing a class of large integers.</p>
+<p align="justify">For implementetion arithmetic operations ("+", "-", "*", "/" and "%") were used standard "school algorithms" in the form of addition, subtraction and etc in column. Because it was unreasonable to use more difficult and efficient algorithms, because it would take much more time to learn them than writing a class of large integers.</p>
 
 <p align="justify">I would be very happy if someone would be interested and help me to implement these algorithms in this class with practical advice on searching for relevant literature and textbooks.</p>
 
