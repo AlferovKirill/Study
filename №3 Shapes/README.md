@@ -20,8 +20,7 @@
 <h1 align="center">Test</h1>
 <p align="justify">Console output (test.cpp):</p>
 
-<p>
-                ~~~ Square ~~~
+<p>             ~~~ Square ~~~
 
 -----------------------------------------------<br>
 Points:(0, 0) (2, 0) (2, 2) (0, 2)<br>
@@ -55,9 +54,10 @@ Shape area #2 = 36, perimeter #2 = 24<br>
 (shape_1 == shape_2) = 0<br>
 congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
------------------------------------------------<br>
+-----------------------------------------------
 
                 ~~~ Rectangle ~~~
+  
 -----------------------------------------------<br>
 Points:(0, 0) (2, 0) (2, 1) (0, 1)<br>
 Shape area #1 = 2, perimeter #1 = 6<br>
