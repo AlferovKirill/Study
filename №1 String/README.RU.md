@@ -11,8 +11,6 @@
 
 <h1 align="center">Test</h1>
 
-<p align="justify">Консольный вывод (test.cpp):</p>
-
 ```
 s1 =
 s2 = 123
