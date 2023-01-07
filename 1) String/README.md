@@ -13,7 +13,7 @@
 
 <h1 align="center">Test</h1>
 
-```bash black
+```diff
 s1 =
 s2 = 123
 s3 = 111
