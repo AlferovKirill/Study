@@ -2,14 +2,15 @@
 #include "../inc/Shapes.h"
 
 void test(const Shape& shape_1, const Shape& shape_2) {
-	std::cout << shape_1 << std::endl << "Shape area #1 = " << shape_1.Area() << ", Perimeter #1 = " << shape_1.Perimeter() << std::endl;
-	std::cout << shape_2 << std::endl << "Shape area #2 = " << shape_2.Area() << ", Perimeter #2 = " << shape_2.Perimeter() << std::endl << std::endl;
+	std::cout << "-----------------------------------------------" << std::endl;
+	std::cout << "Points:" << shape_1 << std::endl << "Shape area #1 = " << shape_1.area() << ", perimeter #1 = " << shape_1.perimeter() << std::endl << std::endl;
+	std::cout << "Points:" << shape_2 << std::endl << "Shape area #2 = " << shape_2.area() << ", perimeter #2 = " << shape_2.perimeter() << std::endl << std::endl;
 
 	std::cout << "(shape_1 == shape_2) = " << shape_1.operator==(shape_2) << std::endl;
-	std::cout << "Congruence(shape_1, shape_2) = " << Congruence(shape_1, shape_2) << std::endl;
-	std::cout << "Similarity(shape_1, shape_2) = " << Similarity(shape_1, shape_2) << std::endl;
+	std::cout << "congruence(shape_1, shape_2) = " << congruence(shape_1, shape_2) << std::endl;
+	std::cout << "similarity(shape_1, shape_2) = " << similarity(shape_1, shape_2) << std::endl;
 
-	std::cout << std::endl << "-----------------------" << std::endl << std::endl;
+	std::cout << "-----------------------------------------------" << std::endl;
 }
 
 int main() {
@@ -18,7 +19,7 @@ int main() {
 	Square square_3(Point(2, 2), Point(4, 2), Point(4, 4), Point(2, 4));
 	Square square_4(Point(2, 2), Point(8, 2), Point(8, 8), Point(2, 8));
 
-	std::cout << "\t~~~ Square ~~~" << std::endl;
+	std::cout << "\t\t~~~ Square ~~~" << std::endl;
 
 	test(square_1, square_2);
 	test(square_1, square_3);
@@ -29,7 +30,7 @@ int main() {
 	Rectangle rectangle_3(Point(2, 2), Point(4, 2), Point(4, 3), Point(2, 3));
 	Rectangle rectangle_4(Point(2, 2), Point(6, 2), Point(6, 4), Point(2, 4));
 
-	std::cout << "\t~~~ Rectangle ~~~" << std::endl;
+	std::cout << std::endl << "\t\t~~~ Rectangle ~~~" << std::endl;
 
 	test(rectangle_1, rectangle_2);
 	test(rectangle_1, rectangle_3);
@@ -40,7 +41,7 @@ int main() {
 	Polygon polygon_3(Point(2, 2), Point(4, 2), Point(4, 3), Point(3, 4), Point(2, 3));
 	Polygon polygon_4(Point(2, 2), Point(6, 2), Point(6, 4), Point(4, 6), Point(2, 4));
 
-	std::cout << "\t~~~ Polygon ~~~" << std::endl;
+	std::cout << std::endl << "\t\t~~~ Polygon ~~~" << std::endl;
 
 	test(polygon_1, polygon_2);
 	test(polygon_1, polygon_3);
@@ -51,7 +52,7 @@ int main() {
 	Triangle triangle_3(Point(4, 3), Point(3, 4), Point(2, 3));
 	Triangle triangle_4(Point(6, 4), Point(4, 6), Point(2, 4));
 
-	std::cout << "\t~~~ Triangle ~~~" << std::endl;
+	std::cout << std::endl << "\t\t~~~ Triangle ~~~" << std::endl;
 
 	test(triangle_1, triangle_2);
 	test(triangle_1, triangle_3);
@@ -62,7 +63,7 @@ int main() {
 	Circle circle_3(Point(1, 3), 2);
 	Circle circle_4(Point(1, 0), 5);
 
-	std::cout << "\t~~~ Circle ~~~" << std::endl;
+	std::cout << std::endl << "\t\t~~~ Circle ~~~" << std::endl;
 
 	test(circle_1, circle_2);
 	test(circle_1, circle_3);
@@ -73,7 +74,7 @@ int main() {
 	Ellipse ellipse_3(Point(1, 3), 2, 4);
 	Ellipse ellipse_4(Point(1, 0), 6, 12);
 
-	std::cout << "\t~~~ Ellipse ~~~" << std::endl;
+	std::cout << std::endl << "\t\t~~~ Ellipse ~~~" << std::endl;
 
 	test(ellipse_1, ellipse_2);
 	test(ellipse_1, ellipse_3);

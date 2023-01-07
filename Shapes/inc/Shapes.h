@@ -11,32 +11,33 @@ const double PI = 3.141593;
 class Shape {
 public:
 	virtual ~Shape() = default;
-	virtual double Area() const = 0;
-	virtual double Perimeter() const = 0;
+	virtual double area() const = 0;
+	virtual double perimeter() const = 0;
 
 	virtual bool operator==(const Shape& shape) const = 0;
-	virtual bool Congruence(const Shape& shape) const = 0;
-	virtual bool Similarity(const Shape& shape) const = 0;
+	virtual bool congruence(const Shape& shape) const = 0;
+	virtual bool similarity(const Shape& shape) const = 0;
 
 	friend std::ostream& operator<<(std::ostream& out, const Shape& shape);
-	friend bool operator==(const Shape& shape_1, const Shape& shape_2);
-	friend bool Congruence(const Shape& shape_1, const Shape& shape_2);
-	friend bool Similarity(const Shape& shape_1, const Shape& shape_2);
 protected:
 	std::vector<Point> points;
 };
+
+bool operator==(const Shape& shape_1, const Shape& shape_2);
+bool congruence(const Shape& shape_1, const Shape& shape_2);
+bool similarity(const Shape& shape_1, const Shape& shape_2);
 
 class Square : public Shape {
 public:
 	Square();
 	Square(Point point_1, Point point_2, Point point_3, Point point_4);
 
-	double Area() const override;
-	double Perimeter() const override;
+	double area() const override;
+	double perimeter() const override;
 
 	bool operator==(const Shape& shape) const override;
-	bool Congruence(const Shape& shape) const override;
-	bool Similarity(const Shape& shape) const override;
+	bool congruence(const Shape& shape) const override;
+	bool similarity(const Shape& shape) const override;
 };
 
 class Rectangle : public Square {
@@ -44,12 +45,12 @@ public:
 	Rectangle();
 	Rectangle(Point point_1, Point point_2, Point point_3, Point point_4);
 
-	double Area() const override;
-	double Perimeter() const override;
+	double area() const override;
+	double perimeter() const override;
 
 	bool operator==(const Shape& shape) const override;
-	bool Congruence(const Shape& shape) const override;
-	bool Similarity(const Shape& shape) const override;
+	bool congruence(const Shape& shape) const override;
+	bool similarity(const Shape& shape) const override;
 };
 
 class Triangle : public Shape {
@@ -57,12 +58,12 @@ public:
 	Triangle();
 	Triangle(Point point_1, Point point_2, Point point_3);
 
-	double Area() const override;
-	double Perimeter() const override;
+	double area() const override;
+	double perimeter() const override;
 
 	bool operator==(const Shape& shape) const override;
-	bool Congruence(const Shape& shape) const override;
-	bool Similarity(const Shape& shape) const override;
+	bool congruence(const Shape& shape) const override;
+	bool similarity(const Shape& shape) const override;
 };
 
 class Polygon : public Triangle {
@@ -75,12 +76,12 @@ public:
 		points.push_back(point);
 	}
 
-	double Area() const override;
-	double Perimeter() const override;
+	double area() const override;
+	double perimeter() const override;
 
 	bool operator==(const Shape& shape) const override;
-	bool Congruence(const Shape& shape) const override;
-	bool Similarity(const Shape& shape) const override;
+	bool congruence(const Shape& shape) const override;
+	bool similarity(const Shape& shape) const override;
 private:
 	Polygon(Point point);
 	Polygon(Point point_1, Point point_2);
@@ -91,12 +92,12 @@ public:
 	Circle();
 	Circle(Point point, double radius = 1.0);
 
-	double Area() const override;
-	double Perimeter() const override;
+	double area() const override;
+	double perimeter() const override;
 
 	bool operator==(const Shape& shape) const override;
-	bool Congruence(const Shape& shape) const override;
-	bool Similarity(const Shape& shape) const override;
+	bool congruence(const Shape& shape) const override;
+	bool similarity(const Shape& shape) const override;
 
 	friend std::ostream& operator<<(std::ostream& out, const Circle& Circle);
 protected:
@@ -106,18 +107,18 @@ protected:
 class Ellipse : public Circle {
 public:
 	Ellipse();
-	Ellipse(Point point, double radius = 1.0, double second_radius = 2.0);
+	Ellipse(Point point, double radius = 1.0, double secondRadius = 2.0);
 
-	double Area() const override;
-	double Perimeter() const override;
+	double area() const override;
+	double perimeter() const override;
 
 	bool operator==(const Shape& shape) const override;
-	bool Congruence(const Shape& shape) const override;
-	bool Similarity(const Shape& shape) const override;
+	bool congruence(const Shape& shape) const override;
+	bool similarity(const Shape& shape) const override;
 
 	friend std::ostream& operator<<(std::ostream& out, const Ellipse& ellipse);
 protected:
-	double second_radius;
+	double secondRadius;
 };
 
 #endif

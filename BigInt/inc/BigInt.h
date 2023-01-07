@@ -43,8 +43,8 @@ private:
 
 	void cut() const;
 	void swap(BigInt& big_int);
-	BigInt& multi10();
-	BigInt& div10();
+	BigInt& digit_multiplied();
+	BigInt& digit_division();
 
 	void operator_assigment_plus(const BigInt& big_int);
 	void operator_assigment_minus(const BigInt& big_int);

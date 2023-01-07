@@ -334,7 +334,7 @@ void BigInt::swap(BigInt& big_int) {
 	std::swap(num_str, big_int.num_str);
 }
 
-BigInt& BigInt::multi10() {
+BigInt& BigInt::digit_multiplied() {
 	++size;
 	char* new_str = new char[size + 1];
 
@@ -348,7 +348,7 @@ BigInt& BigInt::multi10() {
 	return *this;
 }
 
-BigInt& BigInt::div10() {
+BigInt& BigInt::digit_division() {
 	--size;
 	char* new_str = new char[size + 1];
 
@@ -453,7 +453,7 @@ void BigInt::operator_assigment_multi(const BigInt& big_int) {
 			temp.cut();
 
 			for (long long int j = 0; j < k; ++j) {
-				temp.multi10();
+				temp.digit_multiplied();
 			}
 
 			result_of_multi += temp;
@@ -479,7 +479,7 @@ void BigInt::operator_assigment_multi(const BigInt& big_int) {
 			temp.cut();
 
 			for (long long int j = 0; j < k; ++j) {
-				temp.multi10();
+				temp.digit_multiplied();
 			}
 
 			result_of_multi += temp;
@@ -535,23 +535,23 @@ void BigInt::operator_assigment_division(const BigInt& big_int) {
 			--j;
 
 			result += j;
-			result.multi10();
+			result.digit_multiplied();
 
 			div_remainder = bi_num + div_remainder - big_int * j;
 
 			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-				div_remainder.multi10();
+				div_remainder.digit_multiplied();
 			}
 		}
 		else if ((index_of_deep == 0) && (bi_num - big_int + div_remainder < ZERO)) {
 			if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
-				result.multi10();
+				result.digit_multiplied();
 			}
 
 			div_remainder += bi_num;
 
 			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-				div_remainder.multi10();
+				div_remainder.digit_multiplied();
 			}
 
 			++index_of_deep;
@@ -563,24 +563,24 @@ void BigInt::operator_assigment_division(const BigInt& big_int) {
 				--j;
 
 				result += j;
-				result.multi10();
+				result.digit_multiplied();
 				index_of_deep = 0;
 
 				div_remainder = (bi_num + div_remainder) - (big_int * j);
 
 				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-					div_remainder.multi10();
+					div_remainder.digit_multiplied();
 				}
 			}
 			else {
 				if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
-					result.multi10();
+					result.digit_multiplied();
 				}
 
 				div_remainder += bi_num;
 
 				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-					div_remainder.multi10();
+					div_remainder.digit_multiplied();
 				}
 
 				++index_of_deep;
@@ -588,10 +588,10 @@ void BigInt::operator_assigment_division(const BigInt& big_int) {
 		}
 	}
 
-	result.div10();
+	result.digit_division();
 
 	if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-		div_remainder.div10();
+		div_remainder.digit_division();
 	}
 
 	if (div_remainder == big_int) {
@@ -647,23 +647,23 @@ void BigInt::operator_assigment_remainder(const BigInt& big_int) {
 			--j;
 
 			result += j;
-			result.multi10();
+			result.digit_multiplied();
 
 			div_remainder = bi_num + div_remainder - big_int * j;
 
 			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-				div_remainder.multi10();
+				div_remainder.digit_multiplied();
 			}
 		}
 		else if ((index_of_deep == 0) && (bi_num - big_int + div_remainder < ZERO)) {
 			if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
-				result.multi10();
+				result.digit_multiplied();
 			}
 
 			div_remainder += bi_num;
 
 			if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-				div_remainder.multi10();
+				div_remainder.digit_multiplied();
 			}
 
 			++index_of_deep;
@@ -675,24 +675,24 @@ void BigInt::operator_assigment_remainder(const BigInt& big_int) {
 				--j;
 
 				result += j;
-				result.multi10();
+				result.digit_multiplied();
 				index_of_deep = 0;
 
 				div_remainder = (bi_num + div_remainder) - (big_int * j);
 
 				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-					div_remainder.multi10();
+					div_remainder.digit_multiplied();
 				}
 			}
 			else {
 				if (!((result.size) == 1 && (result.num_str[0] == '0'))) {
-					result.multi10();
+					result.digit_multiplied();
 				}
 
 				div_remainder += bi_num;
 
 				if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-					div_remainder.multi10();
+					div_remainder.digit_multiplied();
 				}
 
 				++index_of_deep;
@@ -700,10 +700,10 @@ void BigInt::operator_assigment_remainder(const BigInt& big_int) {
 		}
 	}
 
-	result.div10();
+	result.digit_division();
 
 	if (!((div_remainder.size) == 1 && (div_remainder.num_str[0] == '0'))) {
-		div_remainder.div10();
+		div_remainder.digit_division();
 	}
 
 	if (div_remainder == big_int) {

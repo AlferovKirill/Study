@@ -13,12 +13,12 @@ bool operator==(const Shape& shape_1, const Shape& shape_2) {
 	return shape_1.operator==(shape_2);
 }
 
-bool Congruence(const Shape& shape_1, const Shape& shape_2) {
-	return shape_1.Congruence(shape_2);
+bool congruence(const Shape& shape_1, const Shape& shape_2) {
+	return shape_1.congruence(shape_2);
 }
 
-bool Similarity(const Shape& shape_1, const Shape& shape_2) {
-	return shape_1.Similarity(shape_2);
+bool similarity(const Shape& shape_1, const Shape& shape_2) {
+	return shape_1.similarity(shape_2);
 }
 
 //Square
@@ -36,13 +36,13 @@ Square::Square(Point point_1, Point point_2, Point point_3, Point point_4) {
 	points.push_back(point_4);
 }
 
-double Square::Area() const {
+double Square::area() const {
 	double a = std::sqrt((points[0].x - points[1].x) * (points[0].x - points[1].x) + (points[0].y - points[1].y) * (points[0].y - points[1].y));
 
 	return a * a;
 }
 
-double Square::Perimeter() const {
+double Square::perimeter() const {
 	double a = std::sqrt((points[0].x - points[1].x) * (points[0].x - points[1].x) + (points[0].y - points[1].y) * (points[0].y - points[1].y));
 
 	return 4 * a;
@@ -65,7 +65,7 @@ bool Square::operator==(const Shape& shape) const {
 	}
 }
 
-bool Square::Congruence(const Shape& shape) const {
+bool Square::congruence(const Shape& shape) const {
 	Square temp = dynamic_cast<const Square&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -91,7 +91,7 @@ bool Square::Congruence(const Shape& shape) const {
 	return true;
 }
 
-bool Square::Similarity(const Shape& shape) const {
+bool Square::similarity(const Shape& shape) const {
 	Square temp = dynamic_cast<const Square&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -120,14 +120,14 @@ Rectangle::Rectangle() : Square(Point(0.0, 0.0), Point(2.0, 0.0), Point(2.0, 1.0
 
 Rectangle::Rectangle(Point point_1, Point point_2, Point point_3, Point point_4) : Square(point_1, point_2, point_3, point_4) {}
 
-double Rectangle::Area() const {
+double Rectangle::area() const {
 	double a = std::sqrt((points[0].x - points[1].x) * (points[0].x - points[1].x) + (points[0].y - points[1].y) * (points[0].y - points[1].y));
 	double b = std::sqrt((points[1].x - points[2].x) * (points[1].x - points[2].x) + (points[1].y - points[2].y) * (points[1].y - points[2].y));
 
 	return a * b;
 }
 
-double Rectangle::Perimeter() const {
+double Rectangle::perimeter() const {
 	double a = std::sqrt((points[0].x - points[1].x) * (points[0].x - points[1].x) + (points[0].y - points[1].y) * (points[0].y - points[1].y));
 	double b = std::sqrt((points[1].x - points[2].x) * (points[1].x - points[2].x) + (points[1].y - points[2].y) * (points[1].y - points[2].y));
 
@@ -151,7 +151,7 @@ bool Rectangle::operator==(const Shape& shape) const {
 	}
 }
 
-bool Rectangle::Congruence(const Shape& shape) const {
+bool Rectangle::congruence(const Shape& shape) const {
 	Rectangle temp = dynamic_cast<const Rectangle&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -177,7 +177,7 @@ bool Rectangle::Congruence(const Shape& shape) const {
 	return true;
 }
 
-bool Rectangle::Similarity(const Shape& shape) const {
+bool Rectangle::similarity(const Shape& shape) const {
 	Rectangle temp = dynamic_cast<const Rectangle&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -214,7 +214,7 @@ Triangle::Triangle(Point point_1, Point point_2, Point point_3) {
 	points.push_back(point_3);
 }
 
-double Triangle::Area() const {
+double Triangle::area() const {
 	double a = std::sqrt((points[0].x - points[1].x) * (points[0].x - points[1].x) + (points[0].y - points[1].y) * (points[0].y - points[1].y));
 	double b = std::sqrt((points[1].x - points[2].x) * (points[1].x - points[2].x) + (points[1].y - points[2].y) * (points[1].y - points[2].y));
 	double c = std::sqrt((points[0].x - points[2].x) * (points[0].x - points[2].x) + (points[0].y - points[2].y) * (points[0].y - points[2].y));
@@ -223,7 +223,7 @@ double Triangle::Area() const {
 	return std::sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
-double Triangle::Perimeter() const {
+double Triangle::perimeter() const {
 	double a = std::sqrt((points[0].x - points[1].x) * (points[0].x - points[1].x) + (points[0].y - points[1].y) * (points[0].y - points[1].y));
 	double b = std::sqrt((points[1].x - points[2].x) * (points[1].x - points[2].x) + (points[1].y - points[2].y) * (points[1].y - points[2].y));
 	double c = std::sqrt((points[0].x - points[2].x) * (points[0].x - points[2].x) + (points[0].y - points[2].y) * (points[0].y - points[2].y));
@@ -248,7 +248,7 @@ bool Triangle::operator==(const Shape& shape) const {
 	}
 }
 
-bool Triangle::Congruence(const Shape& shape) const {
+bool Triangle::congruence(const Shape& shape) const {
 	Triangle temp = dynamic_cast<const Triangle&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -274,7 +274,7 @@ bool Triangle::Congruence(const Shape& shape) const {
 	return true;
 }
 
-bool Triangle::Similarity(const Shape& shape) const {
+bool Triangle::similarity(const Shape& shape) const {
 	Triangle temp = dynamic_cast<const Triangle&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -303,7 +303,7 @@ Polygon::Polygon() : Triangle() {}
 
 Polygon::Polygon(Point point_1, Point point_2, Point point_3) : Triangle(point_3, point_2, point_1) {}
 
-double Polygon::Area() const {
+double Polygon::area() const {
 	double result = 0;
 
 	for (size_t i = 0; i < points.size() - 1; ++i) {
@@ -324,7 +324,7 @@ double Polygon::Area() const {
 	return result;
 }
 
-double Polygon::Perimeter() const {
+double Polygon::perimeter() const {
 	double result = 0;
 
 	for (size_t i = 0; i < points.size() - 1; ++i) {
@@ -353,7 +353,7 @@ bool Polygon::operator==(const Shape& shape) const {
 	}
 }
 
-bool Polygon::Congruence(const Shape& shape) const {
+bool Polygon::congruence(const Shape& shape) const {
 	Polygon temp = dynamic_cast<const Polygon&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -379,7 +379,7 @@ bool Polygon::Congruence(const Shape& shape) const {
 	return true;
 }
 
-bool Polygon::Similarity(const Shape& shape) const {
+bool Polygon::similarity(const Shape& shape) const {
 	Polygon temp = dynamic_cast<const Polygon&>(shape);
 
 	if (points.size() != temp.points.size()) {
@@ -422,11 +422,11 @@ Circle::Circle(Point point, double radius) : radius(radius) {
 	points.push_back(point);
 }
 
-double Circle::Area() const {
+double Circle::area() const {
 	return PI * radius * radius;
 }
 
-double Circle::Perimeter() const {
+double Circle::perimeter() const {
 	return 2 * PI * radius;
 }
 
@@ -443,7 +443,7 @@ bool Circle::operator==(const Shape& shape) const {
 	return true;
 }
 
-bool Circle::Congruence(const Shape& shape) const {
+bool Circle::congruence(const Shape& shape) const {
 	Circle temp = dynamic_cast<const Circle&>(shape);
 
 	if (radius != temp.radius) {
@@ -453,7 +453,7 @@ bool Circle::Congruence(const Shape& shape) const {
 	return true;
 }
 
-bool Circle::Similarity(const Shape& shape) const {
+bool Circle::similarity(const Shape& shape) const {
 	Circle temp = dynamic_cast<const Circle&>(shape);
 
 	return true;
@@ -465,16 +465,16 @@ std::ostream& operator<<(std::ostream& out, const Circle& circle) {
 }
 
 //Ellipse
-Ellipse::Ellipse() : second_radius(2.0) {}
+Ellipse::Ellipse() : secondRadius(2.0) {}
 
-Ellipse::Ellipse(Point point, double radius, double second_radius) : Circle(point, radius), second_radius(second_radius) {}
+Ellipse::Ellipse(Point point, double radius, double secondRadius) : Circle(point, radius), secondRadius(secondRadius) {}
 
-double Ellipse::Area() const {
-	return PI * radius * second_radius;
+double Ellipse::area() const {
+	return PI * radius * secondRadius;
 }
 
-double Ellipse::Perimeter() const {
-	return PI * (radius + second_radius);
+double Ellipse::perimeter() const {
+	return PI * (radius + secondRadius);
 }
 
 bool Ellipse::operator==(const Shape& shape) const {
@@ -486,33 +486,31 @@ bool Ellipse::operator==(const Shape& shape) const {
 	else if (radius != temp.radius) {
 		return false;
 	}
-	else if (second_radius != temp.second_radius) {
+	else if (secondRadius != temp.secondRadius) {
 		return false;
 	}
 
 	return true;
 }
 
-bool Ellipse::Congruence(const Shape& shape) const {
+bool Ellipse::congruence(const Shape& shape) const {
 	Ellipse temp = dynamic_cast<const Ellipse&>(shape);
 
 	if (radius != temp.radius) {
 		return false;
 	}
-	else if (second_radius != temp.second_radius) {
+	else if (secondRadius != temp.secondRadius) {
 		return false;
 	}
 
 	return true;
 }
 
-bool Ellipse::Similarity(const Shape& shape) const {
+bool Ellipse::similarity(const Shape& shape) const {
 	Ellipse temp = dynamic_cast<const Ellipse&>(shape);
 
-	std::cout << "3 Similarity" << std::endl;
-
-	int k1 = (radius > second_radius) ? (radius / second_radius) : (second_radius / radius);
-	int k2 = (temp.radius > temp.second_radius) ? (temp.radius / temp.second_radius) : (temp.second_radius / temp.radius);
+	int k1 = (radius > secondRadius) ? (radius / secondRadius) : (secondRadius / radius);
+	int k2 = (temp.radius > temp.secondRadius) ? (temp.radius / temp.secondRadius) : (temp.secondRadius / temp.radius);
 
 	if (k1 == k2) {
 		return true;
@@ -523,6 +521,6 @@ bool Ellipse::Similarity(const Shape& shape) const {
 }
 
 std::ostream& operator<<(std::ostream& out, const Ellipse& ellipse) {
-	out << "Point of center = " << ellipse.points[0] << ", large axle = " << ellipse.radius << ", small axle = " << ellipse.second_radius;
+	out << "Point of center = " << ellipse.points[0] << ", large axle = " << ellipse.radius << ", small axle = " << ellipse.secondRadius;
 	return out;
 }

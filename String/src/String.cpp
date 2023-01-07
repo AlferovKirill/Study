@@ -62,18 +62,14 @@ bool operator==(const String& string_1, const String& string_2) {
 	return result;
 }
 
-bool operator!=(const String& string_1, const String& string_2) {
-	return !(string_1 == string_2);
-}
-
 bool operator<(const String& string_1, const String& string_2) {
 	if (string_1 == string_2) {
 		return false;
 	}
-	else if (string_1.size < string_1.size) {
+	else if (string_1.size < string_2.size) {
 		return true;
 	}
-	else if (string_1.size > string_1.size) {
+	else if (string_1.size > string_2.size) {
 		return false;
 	}
 	else {
@@ -90,4 +86,16 @@ bool operator<(const String& string_1, const String& string_2) {
 
 bool operator>(const String& string_1, const String& string_2) {
 	return (string_2 < string_1);
+}
+
+bool operator>=(const String& string_1, const String& string_2) {
+	return ((string_1 > string_2) || (string_1 == string_2));
+}
+
+bool operator<=(const String& string_1, const String& string_2) {
+	return ((string_1 < string_2) || (string_1 == string_2));
+}
+
+bool operator!=(const String& string_1, const String& string_2) {
+	return !(string_1 == string_2);
 }
