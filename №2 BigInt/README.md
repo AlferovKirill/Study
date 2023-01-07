@@ -28,7 +28,7 @@ BigInt #1 + BigInt #2 = 987654321987654432<br>
 BigInt #1 - BigInt #2 = 987654321987654210<br>
 BigInt #1 * BigInt #2 = 109629629740629629631<br>
 BigInt #1 / BigInt #2 = 8897786684573462<br>
-BigInt #1 % BigInt #2 = 39<br><br>
+BigInt #1 % BigInt #2 = 39<br>
 
 BigInt #1 = 987654321987654321<br>
 BigInt #2 = 111<br><br>
@@ -36,17 +36,17 @@ BigInt #2 = 111<br><br>
 ++BigInt #1 = 987654321987654322<br>
 BigInt #1++ = 987654321987654322<br>
 BigInt #1-- = 987654321987654323<br>
---BigInt #1 = 987654321987654321<br><br>
+--BigInt #1 = 987654321987654321<br>
 
 BigInt #1 = true<br>
-BigInt #1.len() = 18<br><br>
+BigInt #1.len() = 18<br>
 
 BigInt #1 < BigInt #2 = 0<br>
 BigInt #1 > BigInt #2 = 1<br>
 BigInt #1 <= BigInt #2 = 0<br>
 BigInt #1 >= BigInt #2 = 1<br>
 BigInt #1 == BigInt #2 = 0<br>
-BigInt #1 != BigInt #2 = 1<br><br>
+BigInt #1 != BigInt #2 = 1<br>
 
 ----------------------------------------<br>
 ----------------------------------------<br>
@@ -57,54 +57,54 @@ BigInt #1 + BigInt #2 = 20<br>
 BigInt #1 - BigInt #2 = 0<br>
 BigInt #1 * BigInt #2 = 100<br>
 BigInt #1 / BigInt #2 = 1<br>
-BigInt #1 % BigInt #2 = 0<br><br>
+BigInt #1 % BigInt #2 = 0<br>
 
 BigInt #1 = 10<br>
-BigInt #2 = 10<br><br>
+BigInt #2 = 10<br>
 
 ++BigInt #1 = 11<br>
 BigInt #1++ = 11<br>
 BigInt #1-- = 12<br>
---BigInt #1 = 10<br><br>
+--BigInt #1 = 10<br>
 
 BigInt #1 = true<br>
-BigInt #1.len() = 2<br><br>
+BigInt #1.len() = 2<br>
 
 BigInt #1 < BigInt #2 = 0<br>
 BigInt #1 > BigInt #2 = 0<br>
 BigInt #1 <= BigInt #2 = 1<br>
 BigInt #1 >= BigInt #2 = 1<br>
 BigInt #1 == BigInt #2 = 1<br>
-BigInt #1 != BigInt #2 = 0<br><br>
+BigInt #1 != BigInt #2 = 0<br>
 
 ----------------------------------------<br>
 ----------------------------------------<br>
 BigInt #1 = -12324<br>
-BigInt #2 = 6<br><br>
+BigInt #2 = 6<br>
 
 BigInt #1 + BigInt #2 = -12318<br>
 BigInt #1 - BigInt #2 = -12330<br>
 BigInt #1 * BigInt #2 = -73944<br>
 BigInt #1 / BigInt #2 = -2054<br>
-BigInt #1 % BigInt #2 = 0<br><br>
+BigInt #1 % BigInt #2 = 0<br>
 
 BigInt #1 = -12324<br>
-BigInt #2 = 6<br><br>
+BigInt #2 = 6<br>
 
 ++BigInt #1 = -12323<br>
 BigInt #1++ = -12323<br>
 BigInt #1-- = -12322<br>
---BigInt #1 = -12324<br><br>
+--BigInt #1 = -12324<br>
 
 BigInt #1 = true<br>
-BigInt #1.len() = 5<br><br>
+BigInt #1.len() = 5<br>
 
 BigInt #1 < BigInt #2 = 1<br>
 BigInt #1 > BigInt #2 = 0<br>
 BigInt #1 <= BigInt #2 = 1<br>
 BigInt #1 >= BigInt #2 = 0<br>
 BigInt #1 == BigInt #2 = 0<br>
-BigInt #1 != BigInt #2 = 1<br><br>
+BigInt #1 != BigInt #2 = 1<br>
 
 ----------------------------------------<br>
 ----------------------------------------<br>
