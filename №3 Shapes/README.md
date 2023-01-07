@@ -21,8 +21,7 @@
 <p align="justify">Console output (test.cpp):</p>
 
 <p>
-
-  &#9&#9~~~ Square ~~~
+~~~ Square ~~~
 
 -----------------------------------------------<br>
 Points:(0, 0) (2, 0) (2, 2) (0, 2)<br>
