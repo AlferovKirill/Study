@@ -13,7 +13,7 @@
 
 <h1 align="center">Test</h1>
 
-s1 =
+/*s1 =
 s2 = 123
 s3 = 111
 s4 = 111
