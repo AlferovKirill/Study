@@ -31,7 +31,7 @@ BigInt #1 / BigInt #2 = 8897786684573462<br>
 BigInt #1 % BigInt #2 = 39<br>
 
 BigInt #1 = 987654321987654321<br>
-BigInt #2 = 111<br><br>
+BigInt #2 = 111<br>
 
 ++BigInt #1 = 987654321987654322<br>
 BigInt #1++ = 987654321987654322<br>
@@ -51,7 +51,7 @@ BigInt #1 != BigInt #2 = 1<br>
 ----------------------------------------<br>
 ----------------------------------------<br>
 BigInt #1 = 10<br>
-BigInt #2 = 10<br><br>
+BigInt #2 = 10<br>
 
 BigInt #1 + BigInt #2 = 20<br>
 BigInt #1 - BigInt #2 = 0<br>
