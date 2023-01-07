@@ -20,7 +20,9 @@
 <h1 align="center">Test</h1>
 <p align="justify">Console output (test.cpp):</p>
 
-<p>&#9&#9~~~ Square ~~~
+<p>
+
+  &#9&#9~~~ Square ~~~
 
 -----------------------------------------------<br>
 Points:(0, 0) (2, 0) (2, 2) (0, 2)<br>
