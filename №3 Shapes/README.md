@@ -1,5 +1,5 @@
 <h1 align="center">Shapes</h1>
-<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/Shapes/README.RU.md">Русский</a></h4>
+<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/№3%20Shapes/README.RU.md">Русский</a></h4>
 
 <p align="justify">Shapes - project with a hierarchy of basic geometric 2D shapes. There are six types of shapes: square, rectangle, triangle, polygon, circle and ellipse. All shapes are based on the abstract class Shape, which has a default virtual destructor and five purely virtual methods: area, perimeter and operator==, congruence and similarity checks.</p>
 
