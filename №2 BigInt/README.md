@@ -1,5 +1,5 @@
 <h1 align="center">BigInt</h1>
-<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/BigInt/README.RU.md">Русский</a></h4>
+<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/№2%20BigInt/README.RU.md">Русский</a></h4>
 
 <p align="justify">BigInt - my implementation of a class big integers based on const char* (C-style strings). This means that the number is stored as a C-string, and all operations on it are done by manipulating it.</p>
 
