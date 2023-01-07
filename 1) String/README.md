@@ -13,10 +13,10 @@
 
 <h1 align="center">Test</h1>
 
-`Это встроенный код
+```bash
+docker run --network=host --ulimit memlock=-1 docker.dragonflydb.io/dragonflydb/dragonfly
 
-````
-Это блок кода
+redis-cli PING  # redis-cli can be installed with "apt install -y redis-tools"
 ```
 
 s1 =
