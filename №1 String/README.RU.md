@@ -10,6 +10,7 @@
 </ul>
 
 <h1 align="center">Test</h1>
+<p align="justify">Console output (test.cpp):</p>
 
 ```
 s1 =
