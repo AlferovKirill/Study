@@ -12,6 +12,7 @@
 </ul>
 
 <h1 align="center">Test</h1>
+<p align="justify">Console output test.cpp:<br></p>
 
 ```
 s1 =
@@ -92,4 +93,5 @@ s1 > s2: 1
 s2 > s1: 0
 s1 >= s2: 1
 s2 >= s1: 0
+--------------------------
 ```
