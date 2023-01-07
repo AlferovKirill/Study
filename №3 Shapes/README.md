@@ -21,7 +21,7 @@
 <p align="justify">Console output (test.cpp):</p>
 
 <p>
-                ~~~ Square ~~~<br>
+                ~~~ Square ~~~
 -----------------------------------------------<br>
 Points:(0, 0) (2, 0) (2, 2) (0, 2)<br>
 Shape area #1 = 4, perimeter #1 = 8<br>
@@ -56,7 +56,7 @@ congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
 -----------------------------------------------<br>
 
-                ~~~ Rectangle ~~~<br>
+                ~~~ Rectangle ~~~
 -----------------------------------------------<br>
 Points:(0, 0) (2, 0) (2, 1) (0, 1)<br>
 Shape area #1 = 2, perimeter #1 = 6<br>
@@ -91,7 +91,7 @@ congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
 -----------------------------------------------<br>
 
-                ~~~ Polygon ~~~<br>
+                ~~~ Polygon ~~~
 -----------------------------------------------<br>
 Points:(0, 1) (1, 2) (2, 1) (2, 0) (0, 0)<br>
 Shape area #1 = 3, perimeter #1 = 6.82843<br>
@@ -126,7 +126,7 @@ congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
 -----------------------------------------------<br>
 
-                ~~~ Triangle ~~~<br>
+                ~~~ Triangle ~~~
 -----------------------------------------------<br>
 Points:(2, 1) (1, 2) (0, 1)<br>
 Shape area #1 = 1, perimeter #1 = 4.82843<br>
@@ -161,7 +161,7 @@ congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
 -----------------------------------------------<br>
 
-                ~~~ Circle ~~~<br>
+                ~~~ Circle ~~~
 -----------------------------------------------<br>
 Points:(1, 1)<br>
 Shape area #1 = 12.5664, perimeter #1 = 12.5664<br>
@@ -196,7 +196,7 @@ congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
 -----------------------------------------------<br>
 
-                ~~~ Ellipse ~~~<br>
+                ~~~ Ellipse ~~~
 -----------------------------------------------<br>
 Points:(1, 1)<br>
 Shape area #1 = 25.1327, perimeter #1 = 18.8496<br>
