@@ -18,7 +18,6 @@
 
 <h1 align="center">Test</h1>
 <p align="justify">Console output (test.cpp):</p>
-
 ```
 ----------------------------------------
 BigInt #1 = 987654321987654321
