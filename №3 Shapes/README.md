@@ -18,8 +18,9 @@
 </ul>
 
 <h1 align="center">Test</h1>
+<p align="justify">Консольный вывод (test.cpp):</p>
 
-'''
+```
                 ~~~ Square ~~~
 -----------------------------------------------
 Points:(0, 0) (2, 0) (2, 2) (0, 2)
@@ -228,4 +229,4 @@ Shape area #2 = 226.195, perimeter #2 = 56.5487
 (shape_1 == shape_2) = 0
 congruence(shape_1, shape_2) = 0
 similarity(shape_1, shape_2) = 1
-'''
+```
