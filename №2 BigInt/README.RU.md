@@ -17,3 +17,98 @@
 </ul>
 
 <h1 align="center">Test</h1>
+
+```
+----------------------------------------
+BigInt #1 = 987654321987654321
+BigInt #2 = 111
+
+BigInt #1 + BigInt #2 = 987654321987654432
+BigInt #1 - BigInt #2 = 987654321987654210
+BigInt #1 * BigInt #2 = 109629629740629629631
+BigInt #1 / BigInt #2 = 8897786684573462
+BigInt #1 % BigInt #2 = 39
+
+BigInt #1 = 987654321987654321
+BigInt #2 = 111
+
+++BigInt #1 = 987654321987654322
+BigInt #1++ = 987654321987654322
+BigInt #1-- = 987654321987654323
+--BigInt #1 = 987654321987654321
+
+BigInt #1 = true
+BigInt #1.len() = 18
+
+BigInt #1 < BigInt #2 = 0
+BigInt #1 > BigInt #2 = 1
+BigInt #1 <= BigInt #2 = 0
+BigInt #1 >= BigInt #2 = 1
+BigInt #1 == BigInt #2 = 0
+BigInt #1 != BigInt #2 = 1
+
+----------------------------------------
+----------------------------------------
+BigInt #1 = 10
+BigInt #2 = 10
+
+BigInt #1 + BigInt #2 = 20
+BigInt #1 - BigInt #2 = 0
+BigInt #1 * BigInt #2 = 100
+BigInt #1 / BigInt #2 = 1
+BigInt #1 % BigInt #2 = 0
+
+BigInt #1 = 10
+BigInt #2 = 10
+
+++BigInt #1 = 11
+BigInt #1++ = 11
+BigInt #1-- = 12
+--BigInt #1 = 10
+
+BigInt #1 = true
+BigInt #1.len() = 2
+
+BigInt #1 < BigInt #2 = 0
+BigInt #1 > BigInt #2 = 0
+BigInt #1 <= BigInt #2 = 1
+BigInt #1 >= BigInt #2 = 1
+BigInt #1 == BigInt #2 = 1
+BigInt #1 != BigInt #2 = 0
+
+----------------------------------------
+----------------------------------------
+BigInt #1 = -12324
+BigInt #2 = 6
+
+BigInt #1 + BigInt #2 = -12318
+BigInt #1 - BigInt #2 = -12330
+BigInt #1 * BigInt #2 = -73944
+BigInt #1 / BigInt #2 = -2054
+BigInt #1 % BigInt #2 = 0
+
+BigInt #1 = -12324
+BigInt #2 = 6
+
+++BigInt #1 = -12323
+BigInt #1++ = -12323
+BigInt #1-- = -12322
+--BigInt #1 = -12324
+
+BigInt #1 = true
+BigInt #1.len() = 5
+
+BigInt #1 < BigInt #2 = 1
+BigInt #1 > BigInt #2 = 0
+BigInt #1 <= BigInt #2 = 1
+BigInt #1 >= BigInt #2 = 0
+BigInt #1 == BigInt #2 = 0
+BigInt #1 != BigInt #2 = 1
+
+----------------------------------------
+----------------------------------------
+Test all integers from -1000 to 1000.
+Number of tests = 3998000, total errors = 0
+Errors: sum = 0, difference = 0, multiplication = 0, division = 0, remainder = 0
+----------------------------------------
+```
