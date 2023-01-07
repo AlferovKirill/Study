@@ -5,14 +5,14 @@
 
 <p align="justify">Так как реализация фигур была основана на декартовых координатах, то для всех фигур помимо функций подобия и конгруэнтности (прим. понятие равенства для геометрических фигур)  был реализован и оператор равенства, который будет выдавать истинное значение в случае, когда фигуры совпадают по всем своим параметрам (длины сторон, углы и одинаковое расположение на осях координат, т. е. одинаковые координаты).</p>
 
-<p align="justify">Everything is decomposed. All files:</p>
+<p align="justify">Всё декомпозировано. Файлы:</p>
 <ul>
-  <li>inc/Point.h - header file with the Point class declaration and overloading output stream.</li>
-  <li>inc/Shapes.h - header file with declaration all the shape classes and necessary functions.</li>
-  <li>src/Point.cpp - implementation file with the definition of all the Point class functions and overloaded output stream.</li>
-  <li>src/Shapes.cpp - implementation file with the definition of all shape classes functions and all necessary functions.</li>
-  <li>src/test.cpp - test file.</li>
-  <li>CMakeLists.txt - build file.</li>
+  <li>inc/Point.h - заголовочный файл с объявлением класса Point и перегрузкой для его объектов потока вывода.</li>
+  <li>inc/Shapes.h - заголовочный файл с объявлением всех классов фигур и необходимых функций.</li>
+  <li>src/Point.cpp - файл реализации с определением всех функций класса Point и перегрузкой потока вывода.</li>
+  <li>src/Shapes.cpp - файл реализации с определением всех функций классов фигур и других необходимых функций.</li>
+  <li>src/test.cpp - файлик с тестами.</li>
+  <li>CMakeLists.txt - файл сборки.</li>
 </ul>
 
 <h1 align="center">Test</h1>
