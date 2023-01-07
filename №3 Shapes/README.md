@@ -55,7 +55,7 @@ Shape area #2 = 36, perimeter #2 = 24<br>
 (shape_1 == shape_2) = 0<br>
 congruence(shape_1, shape_2) = 0<br>
 similarity(shape_1, shape_2) = 1<br>
------------------------------------------------
+-----------------------------------------------<br>
 
                 ~~~ Rectangle ~~~
   
