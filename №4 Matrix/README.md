@@ -1,5 +1,5 @@
 <h1 align="center">Matrix</h1>
-<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/№3%20Shapes/README.RU.md">Русский</a></h4>
+<h4>Additional languages: <a href="https://github.com/AlferovKirill/Study/blob/main/№4%20Matrix/README.RU.md">Русский</a></h4>
 
 <p align="justify">Matrix - my implementation of a matrix class.</p>
 
