@@ -3,23 +3,31 @@
 
 #include <iostream>
 #include <array>
+#include <vector>
 #include <initializer_list>
 
-template <size_t M, size_t N, typename T = int>
+template <size_t M, size_t N, typename Field = int>
 class Matrix {
 public:
 	Matrix();
+	Matrix(const Matrix<M, N, Field>& matrix);
+	Matrix<M, N, Field>& operator=(const Matrix<M, N, Field>& matrix);
 
-	// Надо реализовать конструкторы от фигурных в соответствии с лекциями по итераторам
-	Matrix(std::initializer_list<T> list) {}
-	Matrix(std::initializer_list<std::initializer_list<T>> list) {}
+	Matrix(std::initializer_list<Field> list);
+	Matrix(std::initializer_list<std::array<Field, N>> list);
 
-	std::array<T, N>& operator[](size_t m);
-	const std::array<T, N>& operator[](size_t m) const;
+	Matrix<M, N, Field>& operator+=(const Matrix<M, N, Field>& matrix);
+	Matrix<M, N, Field>& operator-=(const Matrix<M, N, Field>& matrix);
+
+	Matrix<M, N, Field>& operator+(const Matrix<M, N, Field>& matrix);
+	Matrix<M, N, Field>& operator-(const Matrix<M, N, Field>& matrix);
+
+	std::array<Field, N>& operator[](size_t m);
+	const std::array<Field, N>& operator[](size_t m) const;
 
 	void printConsole();
 private:
-	std::array<std::array<T, N>, M> matrix;
+	std::array<std::array<Field, N>, M> matrix;
 };
 
 #include "../src/Matrix.cpp"
