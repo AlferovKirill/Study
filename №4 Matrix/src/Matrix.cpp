@@ -54,7 +54,8 @@ Matrix<M, N, Field>& Matrix<M, N, Field>::operator-=(const Matrix<M, N, Field>& 
 }
 
 template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field>& Matrix<M, N, Field>::operator*=(const double& num) {
+template <typename Num>
+Matrix<M, N, Field>& Matrix<M, N, Field>::operator*=(const Num& num) {
 	for (size_t m = 0; m < M; ++m) {
 		for (size_t n = 0; n < N; ++n) {
 			matrix[m][n] *= num;
@@ -65,7 +66,8 @@ Matrix<M, N, Field>& Matrix<M, N, Field>::operator*=(const double& num) {
 }
 
 template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field>& Matrix<M, N, Field>::operator/=(const double& num) {
+template <typename Num>
+Matrix<M, N, Field>& Matrix<M, N, Field>::operator/=(const Num& num) {
 	for (size_t m = 0; m < M; ++m) {
 		for (size_t n = 0; n < N; ++n) {
 			matrix[m][n] /= num;
@@ -132,22 +134,15 @@ Matrix<M, N, Field> operator-(const Matrix<M, N, Field>& matrix_1, const Matrix<
 	return result;
 }
 
-template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field> operator*(Matrix<M, N, Field> matrix, const double& num) {
+template <size_t M, size_t N, typename Field, typename Num>
+Matrix<M, N, Field> operator*(Matrix<M, N, Field> matrix, const Num& num) {
 	matrix *= num;
 
 	return matrix;
 }
 
-template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field> operator/(Matrix<M, N, Field> matrix, const double& num) {
-	matrix /= num;
-
-	return matrix;
-}
-
-template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field> operator*(const double& num, Matrix<M, N, Field> matrix) {
+template <size_t M, size_t N, typename Field, typename Num>
+Matrix<M, N, Field> operator*(const Num& num, Matrix<M, N, Field> matrix) {
 	return matrix * num;
 }
 
@@ -164,4 +159,11 @@ Matrix<M, P, Field> operator*(const Matrix<M, N, Field>& matrix_1, const Matrix<
 	}
 
 	return result;
+}
+
+template <size_t M, size_t N, typename Field, typename Num>
+Matrix<M, N, Field> operator/(Matrix<M, N, Field> matrix, const Num& num) {
+	matrix /= num;
+
+	return matrix;
 }

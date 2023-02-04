@@ -20,8 +20,17 @@ public:
 	Matrix<M, N, Field>& operator+=(const Matrix<M, N, Field>& matrix);
 	Matrix<M, N, Field>& operator-=(const Matrix<M, N, Field>& matrix);
 
-	Matrix<M, N, Field>& operator*=(const double& num);
-	Matrix<M, N, Field>& operator/=(const double& num);
+	template <typename Num>
+	Matrix<M, N, Field>& operator*=(const Num& num);
+
+	template <typename Num>
+	Matrix<M, N, Field>& operator/=(const Num& num);
+
+	template <size_t P, size_t K, typename SecondField>
+	Matrix<M, N, Field>& operator*=(const Matrix<P, K, SecondField>& matrix) = delete;
+
+	template <size_t P, size_t K, typename SecondField>
+	Matrix<M, N, Field>& operator/=(const Matrix<P, K, SecondField>& matrix) = delete;
 
 	std::array<Field, N>& operator[](size_t m);
 	const std::array<Field, N>& operator[](size_t m) const;
@@ -41,17 +50,17 @@ Matrix<M, N, Field> operator+(const Matrix<M, N, Field>& matrix_1, const Matrix<
 template <size_t M, size_t N, typename Field>
 Matrix<M, N, Field> operator-(const Matrix<M, N, Field>& matrix_1, const Matrix<M, N, Field>& matrix_2);
 
-template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field> operator*(Matrix<M, N, Field> matrix, const double& num);
+template <size_t M, size_t N, typename Field, typename Num>
+Matrix<M, N, Field> operator*(Matrix<M, N, Field> matrix, const Num& num);
 
-template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field> operator*(const double& num, Matrix<M, N, Field> matrix);
+template <size_t M, size_t N, typename Field, typename Num>
+Matrix<M, N, Field> operator*(const Num& num, Matrix<M, N, Field> matrix);
 
 template <size_t M, size_t N, size_t P, typename Field>
 Matrix<M, P, Field> operator*(const Matrix<M, N, Field>& matrix_1, const Matrix<N, P, Field>& matrix_2);
 
-template <size_t M, size_t N, typename Field>
-Matrix<M, N, Field> operator/(Matrix<M, N, Field> matrix, const double& num);
+template <size_t M, size_t N, typename Field, typename Num>
+Matrix<M, N, Field> operator/(Matrix<M, N, Field> matrix, const Num& num);
 
 #include "../src/Matrix.cpp"
 
