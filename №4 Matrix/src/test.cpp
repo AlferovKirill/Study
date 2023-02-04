@@ -89,4 +89,16 @@ int main() {
 	std::cout << "Matrix #9 - Matrix #10 = " << std::endl;
 
 	(matrix9 - matrix10).printConsole();
+
+	std::cout << "------------------" << std::endl;
+
+	Matrix<3, 2> matrix11 = { {2, 1}, {5, 3}, {4, 7} };
+
+	matrix11.printConsole();
+	std::cout << std::endl;
+
+	transpose(matrix11).printConsole();
+	std::cout << std::endl;
+
+	return 0;
 }

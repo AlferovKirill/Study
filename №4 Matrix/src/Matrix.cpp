@@ -86,7 +86,20 @@ const std::array<Field, N>& Matrix<M, N, Field>::operator[](size_t m) const {
 }
 
 template <size_t M, size_t N, typename Field>
-void Matrix<M, N, Field>::printConsole() {
+Matrix<N, M, Field> Matrix<M, N, Field>::transpose() const {
+	Matrix<N, M, Field> result;
+
+	for (size_t m = 0; m < M; ++m) {
+		for (size_t n = 0; n < N; ++n) {
+			result[n][m] = matrix[m][n];
+		}
+	}
+
+	return result;
+}
+
+template <size_t M, size_t N, typename Field>
+void Matrix<M, N, Field>::printConsole() const {
 	for (size_t m = 0; m < M; ++m) {
 		for (size_t n = 0; n < N; ++n) {
 			std::cout << matrix[m][n] << " ";
@@ -94,6 +107,13 @@ void Matrix<M, N, Field>::printConsole() {
 
 		std::cout << std::endl;
 	}
+}
+
+template <size_t M, size_t N, typename Field>
+Matrix<N, M, Field> transpose(const Matrix<M, N, Field>& matrix) {
+	Matrix<N, M, Field> result = matrix.transpose();
+
+	return result;
 }
 
 template <size_t M, size_t N, typename Field>
