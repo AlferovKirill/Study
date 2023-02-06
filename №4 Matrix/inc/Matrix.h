@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <array>
-#include <vector>
-#include <exception>
 #include <initializer_list>
 
 template <size_t M, size_t N, typename Field = int>
