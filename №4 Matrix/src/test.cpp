@@ -7,9 +7,9 @@ int main() {
 				 {4, 4, 4, 4} };
 
 	Matrix<4, 2> matrix2 = { {1, 1}, 
-							 {1, 1}, 
-							 {1, 1},
-							 {1, 1} };
+				 {1, 1}, 
+				 {1, 1},
+				 {1, 1} };
 
 	std::cout << "Matrix #1" << std::endl;
 	printConsole(matrix1);
