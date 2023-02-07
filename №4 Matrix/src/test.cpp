@@ -138,12 +138,24 @@ int main() {
 
 	std::cout << "------------------" << std::endl;
 
-	Matrix<4, 4> matrix16 = { {1, 1, 1, 1}, {2, 2, 2, 2}, {3, 3, 3, 3}, {4, 4, 4, 4} };
+	Matrix<3, 3, double> matrix16 = { {3, 0, 4}, {1, -1, 2}, {7, 3, 2} };
 
 	printConsole(matrix16);
 	std::cout << std::endl;
 
 	std::cout << "det = " << det(matrix16) << std::endl;
+
+	printConsole(inverse(matrix16));
+
+	std::cout << "------------------" << std::endl;
+
+	Matrix<4, 4, double> m = { {1, 0, 1, 2}, {2, -3, 2, 1}, {4, 1, 2, 1}, {1, 1, 3, 1} };
+
+	printConsole(m);
+	std::cout << std::endl;
+
+	printConsole(inverse(m));
+	std::cout << std::endl;
 
 	return 0;
 }

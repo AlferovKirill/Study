@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <array>
+#include <exception>
 #include <initializer_list>
 
 template <size_t M, size_t N, typename Field = int>
@@ -64,7 +65,7 @@ template <size_t M, size_t N, typename Field>
 Matrix<N, M, Field> transpose(const Matrix<M, N, Field>& matrix);
 
 template <size_t M, size_t N, typename Field>
-Matrix<M - 1, M - 1> cut(const Matrix<M, N, Field>& matrix, size_t column);
+Matrix<M - 1, M - 1, Field> cut(const Matrix<M, N, Field>& matrix, size_t column);
 
 template <size_t M, size_t N, typename Field>
 Field det(const Matrix<M, N, Field>& matrix) = delete;
@@ -77,6 +78,12 @@ Field det(const Matrix<2, 2, Field>& matrix);
 
 template <typename Field>
 Field det(const Matrix<1, 1, Field>& matrix);
+
+template <size_t M, size_t N, typename Field>
+Matrix<M, N, Field> inverse(const Matrix<M, N, Field>& matrix) = delete;
+
+template <size_t M, typename Field>
+Matrix<M, M, Field> inverse(const Matrix<M, M, Field>& matrix);
 
 #include "../src/Matrix.cpp"
 

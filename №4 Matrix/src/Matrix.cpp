@@ -162,19 +162,37 @@ Matrix<N, M, Field> transpose(const Matrix<M, N, Field>& matrix) {
 }
 
 template <size_t M, size_t N, typename Field>
-Matrix<M - 1, M - 1> cut(const Matrix<M, N, Field>& matrix, size_t column) {
-	Matrix<M - 1, M - 1> result;
+Matrix<M - 1, M - 1, Field> cut(const Matrix<M, N, Field>& matrix, size_t r, size_t c) {
+	Matrix<M - 1, M - 1, Field> result;
 
-	for (size_t m = 1; m < M; ++m) {
-		for (size_t n = 0; n < M; ++n) {
-			if (n < column) {
-				result[m - 1][n] = matrix[m][n];
+	for (size_t row = 0; row < M; ++row) {
+		if (row == r) {
+			continue;
+		}
+		else if (row < r) {
+			for (size_t column = 0; column < M; ++column) {
+				if (column < c) {
+					result[row][column] = matrix[row][column];
+				}
+				if (column == c) {
+					continue;
+				}
+				else if (column > c) {
+					result[row][column - 1] = matrix[row][column];
+				}
 			}
-			if (n == column) {
-				continue;
-			}
-			else if (n > column) {
-				result[m - 1][n - 1] = matrix[m][n];
+		}
+		else if (row > r) {
+			for (size_t column = 0; column < M; ++column) {
+				if (column < c) {
+					result[row - 1][column] = matrix[row][column];
+				}
+				if (column == c) {
+					continue;
+				}
+				else if (column > c) {
+					result[row - 1][column - 1] = matrix[row][column];
+				}
 			}
 		}
 	}
@@ -186,8 +204,8 @@ template <size_t M, typename Field>
 Field det(const Matrix<M, M, Field>& matrix) {
 	Field result = 0;
 
-	for (size_t m = 0; m < M; ++m) {
-		result += std::pow((-1), m + 2) * (matrix[0][m]) * det(cut(matrix, m));
+	for (size_t column = 0; column < M; ++column) {
+		result += std::pow((-1), column + 2) * (matrix[0][column]) * det(cut(matrix, 0, column));
 	}
 
 	return result;
@@ -201,4 +219,26 @@ Field det(const Matrix<2, 2, Field>& matrix) {
 template <typename Field>
 Field det(const Matrix<1, 1, Field>& matrix) {
 	return matrix[0][0];
+}
+
+template <size_t M, typename Field>
+Matrix<M, M, Field> inverse(const Matrix<M, M, Field>& matrix) {
+	Field determinant = det(matrix);
+
+	if (determinant == 0) {
+		throw std::exception("Matrix determenant is equal 0.");
+	}
+
+	Matrix<M, M, Field> algComplementsMatrix;
+
+	for (size_t row = 0; row < M; ++row) {
+		for (size_t column = 0; column < M; ++column) {
+			algComplementsMatrix[row][column] = std::pow((-1), column + row + 2) * det(cut(matrix, row, column));
+		}
+	}
+
+	algComplementsMatrix = transpose(algComplementsMatrix);
+	algComplementsMatrix /= determinant;
+
+	return algComplementsMatrix;
 }
