@@ -143,9 +143,9 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<4, 4, double> matrix11 = { {1, 0, 1, 2},
-						  {2, -3, 2, 1},
-						  {4, 1, 2, 1},
-						  {1, 1, 3, 1} };
+					  {2, -3, 2, 1},
+					  {4, 1, 2, 1},
+					  {1, 1, 3, 1} };
 
 	std::cout << "Matrix #11" << std::endl;
 	printConsole(matrix11);
@@ -160,8 +160,8 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<3, 3, double> matrix12 = { {1, 3, 2},
-						  {0, -2, 1},
-						  {4, 1, 2} };
+					  {0, -2, 1},
+					  {4, 1, 2} };
 
 	std::cout << "Matrix #12" << std::endl;
 	printConsole(matrix12);
@@ -176,7 +176,7 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<2, 2, double> matrix13 = { {1, 2},
-						  {3, 2} };
+					  {3, 2} };
 
 	std::cout << "Matrix #13" << std::endl;
 	printConsole(matrix13);
