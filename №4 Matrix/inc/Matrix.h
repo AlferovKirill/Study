@@ -85,6 +85,9 @@ Matrix<M, N, Field> inverse(const Matrix<M, N, Field>& matrix) = delete;
 template <size_t M, typename Field>
 Matrix<M, M, Field> inverse(const Matrix<M, M, Field>& matrix);
 
+template <typename Field>
+Matrix<1, 1, Field> inverse(const Matrix<1, 1, Field>& matrix);
+
 #include "../src/Matrix.cpp"
 
 #endif

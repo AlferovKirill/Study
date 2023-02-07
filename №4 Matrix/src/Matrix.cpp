@@ -174,7 +174,7 @@ Matrix<M - 1, M - 1, Field> cut(const Matrix<M, N, Field>& matrix, size_t r, siz
 				if (column < c) {
 					result[row][column] = matrix[row][column];
 				}
-				if (column == c) {
+				else if (column == c) {
 					continue;
 				}
 				else if (column > c) {
@@ -241,4 +241,11 @@ Matrix<M, M, Field> inverse(const Matrix<M, M, Field>& matrix) {
 	algComplementsMatrix /= determinant;
 
 	return algComplementsMatrix;
+}
+
+template <typename Field>
+Matrix<1, 1, Field> inverse(const Matrix<1, 1, Field>& matrix) {
+	Matrix<1, 1, Field> result = { 1 / matrix[0][0] };
+
+	return result;
 }
