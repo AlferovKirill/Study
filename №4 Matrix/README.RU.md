@@ -20,18 +20,17 @@
 <p align="justify">Консольный вывод (test.cpp):</p>
 
 <p>
-<br><br><br>
 Matrix #1
 1 1 1 1
 2 2 2 2
 3 3 3 3
-4 4 4 4
+4 4 4 4<br>
 
 Matrix #2
 1 1
 1 1
 1 1
-1 1
+1 1<br>
 
 Matrix #1 * Matrix #2 =
 4 4
