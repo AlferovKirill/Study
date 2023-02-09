@@ -3,7 +3,7 @@
 
 <p align="justify">Matrix - my implementation of a class of matrices. The task was to implement a template class of matrices and all the basic linear-algebraic operations on them: matrix multiplication/division by a number, sum and difference of matrices, transposition, finding the determinant and inverse matrix.</p>
 
-<p align="justify">All operations must check the validity of their use over operands at the compilation time ( For example, multiplying matrices by each other is possible only if the first one has the same number of columns as the number of rows of the second one).</p>
+<p align="justify">All operations must check the validity of their use over operands at the compilation time (For example, multiplying matrices by each other is possible only if the first one has the same number of columns as the number of rows of the second one).</p>
 
 <p align="justify">In the process of decomposing the project and decomposing class and function declarations with their definitions, I had a problem with the linker, when during preprocessing and compilation we get two object files: one with declaration and implementation of template class and functions, and another (main) with declaration and use of their specific version.</p>
 
