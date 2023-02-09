@@ -19,8 +19,7 @@
 <h1 align="center">Test</h1>
 <p align="justify">Консольный вывод (test.cpp):</p>
 
-<p>
-Matrix #1
+<p>Matrix #1
 1 1 1 1
 2 2 2 2
 3 3 3 3
@@ -162,5 +161,4 @@ Matrix #14
 Matrix #14 det = 2
 
 Inverse Matrix #14 =
-0.5
-</p>
+0.5</p>
