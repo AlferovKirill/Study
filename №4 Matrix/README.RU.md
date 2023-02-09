@@ -19,75 +19,75 @@
 <h1 align="center">Test</h1>
 <p align="justify">Консольный вывод (test.cpp):</p>
 
-<p>Matrix #1
-1 1 1 1
-2 2 2 2
-3 3 3 3
+<p>Matrix #1<br>
+1 1 1 1<br>
+2 2 2 2<br>
+3 3 3 3<br>
 4 4 4 4<br>
 
-Matrix #2
-1 1
-1 1
-1 1
+Matrix #2<br>
+1 1<br>
+1 1<br>
+1 1<br>
 1 1<br>
 
-Matrix #1 * Matrix #2 =
-4 4
-8 8
-12 12
-16 16
+Matrix #1 * Matrix #2 =<br>
+4 4<br>
+8 8<br>
+12 12<br>
+16 16<br>
 
-Transpose Matrix #1
-1 2 3 4
-1 2 3 4
-1 2 3 4
-1 2 3 4
+Transpose Matrix #1<br>
+1 2 3 4<br>
+1 2 3 4<br>
+1 2 3 4<br>
+1 2 3 4<br>
 
-Transpose Matrix #2
-1 1 1 1
-1 1 1 1
+Transpose Matrix #2<br>
+1 1 1 1<br>
+1 1 1 1<br>
 
-------------------
-Matrix #3
-2 1
-3 4
+------------------<br>
+Matrix #3<br>
+2 1<br>
+3 4<br>
 
-Matrix #4
-1 0 3
-4 2 1
+Matrix #4<br>
+1 0 3<br>
+4 2 1<br>
 
-Matrix #3 * Matrix #4 =
-6 2 7
-19 8 13
+Matrix #3 * Matrix #4 =<br>
+6 2 7<br>
+19 8 13<br>
 
-Transpose Matrix #3
-2 3
-1 4
+Transpose Matrix #3<br>
+2 3<br>
+1 4<br>
 
-Transpose Matrix #4
-1 4
-0 2
-3 1
+Transpose Matrix #4<br>
+1 4<br>
+0 2<br>
+3 1<br>
 
-------------------
-Matrix #5
-1 1
-1 1
+------------------<br>
+Matrix #5<br>
+1 1<br>
+1 1<br>
 
-Matrix #5 * 8 =
-8 8
-8 8
+Matrix #5 * 8 =<br>
+8 8<br>
+8 8<br>
 
-------------------
-Matrix #6
-3 3 3
-9 9 9
-6 6 6
+------------------<br>
+Matrix #6<br>
+3 3 3<br>
+9 9 9<br>
+6 6 6<br>
 
-Matrix #6 / 3 =
-1 1 1
-3 3 3
-2 2 2
+Matrix #6 / 3 =<br>
+1 1 1<br>
+3 3 3<br>
+2 2 2<br>
 
 ------------------
 Matrix #7
