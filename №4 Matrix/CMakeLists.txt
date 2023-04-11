@@ -2,4 +2,4 @@
 
 project ("Matrix")
 
-add_executable (Matrix  "inc/Matrix.h" "src/test.cpp")
+add_executable (Matrix  "inc/Matrix.hpp" "src/test.cpp")

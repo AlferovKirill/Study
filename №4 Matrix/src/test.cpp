@@ -1,15 +1,15 @@
-#include "../inc/Matrix.h"
+#include "../inc/Matrix.hpp"
 
 int main() {
 	Matrix<4, 4> matrix1 = { {1, 1, 1, 1}, 
-				 {2, 2, 2, 2},
-				 {3, 3, 3, 3},
-				 {4, 4, 4, 4} };
+							 {2, 2, 2, 2},
+							 {3, 3, 3, 3},
+							 {4, 4, 4, 4} };
 
 	Matrix<4, 2> matrix2 = { {1, 1}, 
-				 {1, 1}, 
-				 {1, 1},
-				 {1, 1} };
+							 {1, 1}, 
+							 {1, 1},
+							 {1, 1} };
 
 	std::cout << "Matrix #1" << std::endl;
 	printConsole(matrix1);
@@ -35,10 +35,10 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<2, 2> matrix3 = { {2, 1},
-				 {3, 4} };
+							 {3, 4} };
 
 	Matrix<2, 3> matrix4 = { {1, 0, 3},
-				 {4, 2, 1} };
+							 {4, 2, 1} };
 
 	std::cout << "Matrix #3" << std::endl;
 	printConsole(matrix3);
@@ -64,7 +64,7 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<2, 2> matrix5 = { {1, 1},
-				 {1, 1} };
+							 {1, 1} };
 
 	std::cout << "Matrix #5" << std::endl;
 	printConsole(matrix5);
@@ -77,8 +77,8 @@ int main() {
 
 	std::cout << "------------------" << std::endl;
 	Matrix<3, 3> matrix6 = { {3, 3, 3},
-				 {9, 9, 9},
-				 {6, 6, 6} };
+							 {9, 9, 9},
+							 {6, 6, 6} };
 
 	std::cout << "Matrix #6" << std::endl;
 	printConsole(matrix6);
@@ -88,19 +88,18 @@ int main() {
 
 	printConsole(matrix6 / 3);
 	std::cout << std::endl;
-	//--------------------
 	
 	std::cout << "------------------" << std::endl;
 
 	Matrix<2, 2> matrix7 = { {4, 4},
-				 {4, 4},
-				 {4, 4},
-				 {4, 4} };
+							 {4, 4},
+							 {4, 4},
+							 {4, 4} };
 
 	Matrix<2, 2> matrix8 = { {1, 1},
-				 {1, 1},
-				 {1, 1},
-				 {1, 1} };
+							 {1, 1},
+							 {1, 1},
+							 {1, 1} };
 
 	std::cout << "Matrix #7" << std::endl;
 	printConsole(matrix7);
@@ -118,14 +117,14 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<2, 2> matrix9 = { {7, 7},
-				 {7, 7},
-				 {7, 7},
-				 {7, 7} };
+							 {7, 7},
+							 {7, 7},
+							 {7, 7} };
 
 	Matrix<2, 2> matrix10 = { {1, 1},
-				  {1, 1},
-				  {1, 1},
-				  {1, 1} };
+							  {1, 1},
+							  {1, 1},
+							  {1, 1} };
 
 	std::cout << "Matrix #9" << std::endl;
 	printConsole(matrix9);
@@ -142,10 +141,10 @@ int main() {
 	
 	std::cout << "------------------" << std::endl;
 
-	Matrix<4, 4, double> matrix11 = { {1, 0, 1, 2},
-					  {2, -3, 2, 1},
-					  {4, 1, 2, 1},
-					  {1, 1, 3, 1} };
+	Matrix<4, 4, double> matrix11 = { {5, 1, 5, 1},
+									  {1, 1, 5, 5},
+									  {1, 5, 1, 5},
+									  {1, 5, 5, 1} };
 
 	std::cout << "Matrix #11" << std::endl;
 	printConsole(matrix11);
@@ -159,9 +158,9 @@ int main() {
 	
 	std::cout << "------------------" << std::endl;
 
-	Matrix<3, 3, double> matrix12 = { {1, 3, 2},
-					  {0, -2, 1},
-					  {4, 1, 2} };
+	Matrix<3, 3, double> matrix12 = { {3, 1, 2},
+									  {4, 6, 4},
+									  {8, 7, 9} };
 
 	std::cout << "Matrix #12" << std::endl;
 	printConsole(matrix12);
@@ -176,7 +175,7 @@ int main() {
 	std::cout << "------------------" << std::endl;
 
 	Matrix<2, 2, double> matrix13 = { {1, 2},
-					  {3, 2} };
+									  {3, 2} };
 
 	std::cout << "Matrix #13" << std::endl;
 	printConsole(matrix13);
