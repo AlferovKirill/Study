@@ -31,16 +31,14 @@
 
 <p align="justify">4. Matrix - my implementation of a matrix class. Decomposed. All files:</p>
 <ul>
-  <li>inc/Matrix.h - header file with the declaration of the class and all necessary functions.</li>
-  <li>src/Matrix.cpp - implementation file with the definition of all classes functions.</li>
+  <li>inc/Matrix.hpp - header file with the declaration and implementation of the class and all necessary functions.</li>
   <li>src/test.cpp - test file.</li>
   <li>CMakeLists.txt - build file.</li>
 </ul>
 
 <p align="justify">5. Vector - my implementation of a dynamic array. Decomposed. All files:</p>
 <ul>
-  <li>inc/Matrix.h - header file with the declaration of the class and all necessary functions.</li>
-  <li>src/Matrix.cpp - implementation file with the definition of all classes functions.</li>
-  <li>src/test.cpp - test file.</li>
+  <li>Headers/vector.hpp - header file with implementation of the class.</li>
+  <li>Source/test.cpp - test file.</li>
   <li>CMakeLists.txt - build file.</li>
 </ul>
