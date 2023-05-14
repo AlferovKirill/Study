@@ -10,7 +10,9 @@ class String {
 public:
 	String();
 	String(const String& string);
-	String& operator=(String string);
+	String& operator=(const String& string);
+	String(String&& string);
+	String& operator=(String&& string);
 	~String();
 
 	String(const char* cstring);
