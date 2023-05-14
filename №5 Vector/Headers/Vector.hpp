@@ -63,7 +63,7 @@ public:
 
 		try {
 			for (; i < sz; ++i) {
-				AllocatorTraits::construct(allocator, new_arr + i, arr[i]);
+				AllocatorTraits::construct(allocator, new_arr + i, std::move(arr[i]));
 			}
 		}
 		catch (...) {
@@ -98,6 +98,12 @@ public:
 		if (sz == cap) reserve(2 * cap);
 
 		AllocatorTraits::construct(allocator, arr + sz, value);
+		++sz;
+	}
+	void push_back(T&& value) {
+		if (sz == cap) reserve(2 * cap);
+
+		AllocatorTraits::construct(allocator, arr + sz, std::move(value));
 		++sz;
 	}
 	void pop_back() {
