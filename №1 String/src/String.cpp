@@ -4,9 +4,26 @@ String::String() : size(1), str(new char('\0')) {}
 
 String::String(const String& string) : String(string.str) {}
 
-String& String::operator=(String string) {
-	std::swap(size, string.size);
-	std::swap(str, string.str);
+String& String::operator=(const String& string) {
+	String temp = string;
+
+	std::swap(size, temp.size);
+	std::swap(str, temp.str);
+
+	return *this;
+}
+
+String::String(String&& string) : size(string.size), str(string.str) {
+	string.size = 0;
+	string.str = nullptr;
+}
+
+String& String::operator=(String&& string) {
+	String temp = std::move(string);
+
+	std::swap(temp.size, size);
+	std::swap(temp.str, str);
+
 	return *this;
 }
 
@@ -82,6 +99,8 @@ bool operator<(const String& string_1, const String& string_2) {
 			}
 		}
 	}
+
+	return false;
 }
 
 bool operator>(const String& string_1, const String& string_2) {
