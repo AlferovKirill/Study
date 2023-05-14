@@ -1,5 +1,5 @@
 #include "../Headers/Vector.hpp"
-//ffffffffffffff
+
 int main() {
 	Vector<int> v1;
 
