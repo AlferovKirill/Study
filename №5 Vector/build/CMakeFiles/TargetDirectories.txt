@@ -1,0 +1,3 @@
+/home/kirill/Documents/GitHub/Study/№5 Vector/build/CMakeFiles/Vector.dir
+/home/kirill/Documents/GitHub/Study/№5 Vector/build/CMakeFiles/edit_cache.dir
+/home/kirill/Documents/GitHub/Study/№5 Vector/build/CMakeFiles/rebuild_cache.dir
