@@ -1,7 +1,7 @@
-#include "../Headers/vector.hpp"
+#include "../Headers/Vector.hpp"
 
 int main() {
-	vector<int> v1;
+	Vector<int> v1;
 
 	v1.reserve(40);
 
@@ -12,7 +12,7 @@ int main() {
 
 	std::cout << "1. v1 = " << v1[0] << " " << v1[1] << " " << v1[2] << std::endl;
 
-	vector<int> v2(3);
+	Vector<int> v2(3);
 
 	std::cout << "2. v2 = " << v2[0] << " " << v2[1] << " " << v2[2] << std::endl;
 
@@ -26,11 +26,11 @@ int main() {
 
 	std::cout << "4. v2 = " << v2[0] << " " << v2[1] << " " << v2[2] << std::endl;
 
-	vector<int> v3 = v2;
+	Vector<int> v3 = v2;
 
 	std::cout << "5. v3 = " << v3[0] << " " << v3[1] << " " << v3[2] << std::endl << std::endl;
 
-	for (vector<int>::const_iterator it = v1.cbegin(); it != v1.cend(); ++it) {
+	for (Vector<int>::const_iterator it = v1.cbegin(); it != v1.cend(); ++it) {
 		std::cout << *it << " ";
 	}
 
@@ -60,7 +60,7 @@ int main() {
 
 	std::cout << std::endl << std::endl << "v1.rend() - v1.rbegin() = " << (v1.rend() - v1.rbegin()) << std::endl << std::endl;
 
-	for (vector<int>::const_reverse_iterator it = v1.crbegin(); it != v1.crend(); ++it) {
+	for (Vector<int>::const_reverse_iterator it = v1.crbegin(); it != v1.crend(); ++it) {
 		std::cout << *it << " ";
 	}
 

@@ -3,9 +3,9 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("vector")
+project (Vector)
 
 # Добавьте источник в исполняемый файл этого проекта.
-add_executable (vector  "Headers/vector.hpp" "Source/test.cpp")
+add_executable (Vector  "Headers/Vector.hpp" "Source/test.cpp")
 
 # TODO: Добавьте тесты и целевые объекты, если это необходимо.

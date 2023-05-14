@@ -6,13 +6,13 @@
 #include <iterator>
 
 template <typename T, typename Allocator = std::allocator<T>>
-class vector {
+class Vector {
 public:
-	vector() : sz(0), cap(0), arr(nullptr), allocator(Allocator()) {}
-	vector(size_t sz, const T& value = T(), const Allocator& allocator = Allocator()) : sz(0), cap(0), arr(nullptr), allocator(allocator) {
+	Vector() : sz(0), cap(0), arr(nullptr), allocator(Allocator()) {}
+	Vector(size_t sz, const T& value = T(), const Allocator& allocator = Allocator()) : sz(0), cap(0), arr(nullptr), allocator(allocator) {
 		resize(sz, value);
 	}
-	vector(const vector<T, Allocator>& another) : sz(0), cap(0), arr(nullptr) {
+	Vector(const Vector<T, Allocator>& another) : sz(0), cap(0), arr(nullptr) {
 		allocator = AllocatorTraits::select_on_container_copy_construction(another.allocator);
 
 		reserve(another.cap);
@@ -23,7 +23,7 @@ public:
 
 		sz = another.sz;
 	}
-	vector<T, Allocator>& operator=(const vector<T, Allocator>& another) {
+	Vector<T, Allocator>& operator=(const Vector<T, Allocator>& another) {
 		if (this == &another) return *this;
 
 		for (size_t i = 0; i < sz; ++i) {
@@ -47,7 +47,7 @@ public:
 
 		return *this;
 	}
-	~vector() {
+	~Vector() {
 		for (size_t i = 0; i < sz; ++i) {
 			AllocatorTraits::destroy(allocator, arr + i);
 		}
@@ -137,6 +137,7 @@ public:
 		return cap;
 	}
 
+	// Убрать conditional, заменить на traits
 	template <bool IsConst, typename True, typename False>
 	struct conditional {
 		using type = True;
