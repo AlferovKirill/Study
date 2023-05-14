@@ -38,7 +38,7 @@
 
 <p align="justify">5. Vector - my implementation of a dynamic array. Decomposed. All files:</p>
 <ul>
-  <li>Headers/vector.hpp - header file with implementation of the class.</li>
+  <li>Headers/Vector.hpp - header file with implementation of the class.</li>
   <li>Source/test.cpp - test file.</li>
   <li>CMakeLists.txt - build file.</li>
 </ul>
