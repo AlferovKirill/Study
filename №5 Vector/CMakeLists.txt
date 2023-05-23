@@ -2,4 +2,4 @@
 
 project (Vector)
 
-add_executable (Vector  "Headers/Vector.hpp" "Source/test.cpp")
+add_executable (Vector  "inc/Vector.hpp" "src/test.cpp")

@@ -1,4 +1,4 @@
-#include "../Headers/Vector.hpp"
+#include "../inc/Vector.hpp"
 
 int main() {
 	Vector<int> v1;
