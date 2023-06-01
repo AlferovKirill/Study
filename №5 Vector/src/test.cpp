@@ -107,4 +107,48 @@ int main() {
 
 	std::cout << "v4_iter->size() = "<< v4_iter->size() << std::endl;
 	std::cout << "v4_r_iter->size() = "<< v4_r_iter->size() << std::endl;
+
+	std::cout << "v4: ";
+
+	for (auto item : v4) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl;
+
+	Vector<std::string> v5 = std::move(v4);
+
+	std::cout << "v4: ";
+
+	for (auto item : v4) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl;
+
+	std::cout << "v5: ";
+
+	for (auto item : v5) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl;
+
+	v4 = std::move(v5);
+
+	std::cout << "v4: ";
+
+	for (auto item : v4) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl;
+
+	std::cout << "v5: ";
+
+	for (auto item : v5) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl;
 }

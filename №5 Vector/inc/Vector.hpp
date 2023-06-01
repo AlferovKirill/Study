@@ -9,7 +9,7 @@
 /*
 	Notes:
 	1) Create initializer_list
-	2) Realise move-copy constructor n' move-operator assigment 
+	2) Reformate tests
 */
 
 template <typename T, typename Allocator = std::allocator<T>>
@@ -18,7 +18,9 @@ public:
 	Vector();
 	Vector(size_t sz, const T& value = T(), const Allocator& allocator = Allocator());
 	Vector(const Vector<T, Allocator>& another);
+	Vector(Vector<T, Allocator>&& another);
 	Vector<T, Allocator>& operator=(const Vector<T, Allocator>& another);
+	Vector<T, Allocator>& operator=(Vector<T, Allocator>&& another);
 	~Vector();
 
 	void reserve(size_t new_cap);
@@ -245,6 +247,13 @@ Vector<T, Allocator>::Vector(const Vector<T, Allocator>& another) : sz(0), cap(0
 }
 
 template <typename T, typename Allocator>
+Vector<T, Allocator>::Vector(Vector<T, Allocator>&& another) : sz(another.sz), cap(another.cap), arr(another.arr), allocator(another.allocator) {
+	another.sz = 0;
+	another.cap = 0;
+	another.arr = nullptr;
+}
+
+template <typename T, typename Allocator>
 Vector<T, Allocator>& Vector<T, Allocator>::operator=(const Vector<T, Allocator>& another) {
 	if (this == &another) return *this;
 
@@ -266,6 +275,18 @@ Vector<T, Allocator>& Vector<T, Allocator>::operator=(const Vector<T, Allocator>
 	for (size_t i = 0; i < sz; ++i) {
 		AllocatorTraits::construct(allocator, arr + i, another[i]);
 	}
+
+	return *this;
+}
+
+template <typename T, typename Allocator>
+Vector<T, Allocator>& Vector<T, Allocator>::operator=(Vector<T, Allocator>&& another) {
+	Vector<T, Allocator> temp = std::move(another);
+
+	std::swap(temp.sz, sz);
+	std::swap(temp.cap, cap);
+	std::swap(temp.arr, arr);
+	std::swap(temp.allocator, allocator);
 
 	return *this;
 }
