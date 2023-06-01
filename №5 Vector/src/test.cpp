@@ -1,4 +1,5 @@
 #include "../inc/Vector.hpp"
+#include <string>
 
 int main() {
 	Vector<int> v1;
@@ -81,4 +82,29 @@ int main() {
 
 	std::cout << std::endl << "v1.rbegin() == v1.rbegin() = " << (v1.rbegin() == v1.rbegin()) << std::endl;
 	std::cout << "v1.rbegin() != v1.rbegin() = " << (v1.rbegin() != v1.rbegin()) << std::endl;
+
+	std::cout << std::string(50, '-') << std::endl;
+
+	Vector<std::string> v4;
+	
+	v4.push_back("111");
+	v4.push_back("222");
+	v4.push_back("333");
+	v4.push_back("444");
+	v4.push_back("555");
+
+	for (auto item : v4) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl;
+
+	auto v4_iter = v4.begin();
+	auto v4_r_iter = v4.rbegin();
+
+	std::cout << "*v4_iter = "<< *v4_iter << std::endl;
+	std::cout << "*v4_r_iter = "<< *v4_r_iter << std::endl;
+
+	std::cout << "v4_iter->size() = "<< v4_iter->size() << std::endl;
+	std::cout << "v4_r_iter->size() = "<< v4_r_iter->size() << std::endl;
 }

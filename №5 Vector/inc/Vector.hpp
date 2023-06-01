@@ -6,6 +6,12 @@
 #include <iterator>
 #include <type_traits>
 
+/*
+	Notes:
+	1) Create initializer_list
+	2) Realise move-copy constructor n' move-operator assigment 
+*/
+
 template <typename T, typename Allocator = std::allocator<T>>
 class Vector {
 public:
@@ -37,6 +43,12 @@ public:
 	template <bool IsConst>
 	class common_iterator {
 	public:
+		using iterator_category = std::random_access_iterator_tag;
+		using value_type = std::conditional_t<IsConst, const T, T>;
+		using difference_type = long long int;
+		using pointer = std::conditional_t<IsConst, const T*, T*>;
+		using reference = std::conditional_t<IsConst, const T&, T&>;
+
 		common_iterator(std::conditional_t<IsConst, const T*, T*> ptr) : ptr(ptr) {}
 		std::conditional_t<IsConst, const T*, T*> operator->() const {
 			return ptr;
@@ -102,15 +114,6 @@ public:
 		bool operator>=(const common_iterator<IsConst>& another) const {
 			return !(*this < another);
 		}
-
-		using iterator_category = std::random_access_iterator_tag;
-		using value_type = std::conditional_t<IsConst, const T, T>;
-		using difference_type = long long int;
-		using pointer = std::conditional_t<IsConst, const T*, T*>;
-		using reference = std::conditional_t<IsConst, const T&, T&>;
-
-		template <typename Iterator>
-		friend class common_reverse_iterator;
 	private:
 		std::conditional_t<IsConst, const T*, T*> ptr;
 	};
@@ -118,9 +121,15 @@ public:
 	template <typename Iterator>
 	class common_reverse_iterator {
 	public:
+		using iterator_category = std::random_access_iterator_tag;
+		using value_type = typename std::iterator_traits<Iterator>::value_type;
+		using difference_type = long long int;
+		using pointer = typename std::iterator_traits<Iterator>::pointer;
+		using reference = typename std::iterator_traits<Iterator>::reference;
+
 		common_reverse_iterator(const Iterator& iterator) : iterator(iterator) {}
 		typename std::iterator_traits<Iterator>::pointer operator->() {
-			return iterator.ptr;
+			return &(*iterator);
 		}
 		typename std::iterator_traits<Iterator>::value_type operator*() {
 			return *iterator;
@@ -211,6 +220,8 @@ private:
 
 	using AllocatorTraits = std::allocator_traits<Allocator>;
 };
+
+//			Implementation
 
 template <typename T, typename Allocator>
 Vector<T, Allocator>::Vector() : sz(0), cap(0), arr(nullptr), allocator(Allocator()) {}
@@ -314,7 +325,8 @@ void Vector<T, Allocator>::resize(size_t new_sz, const T& value) {
 
 template <typename T, typename Allocator>
 void Vector<T, Allocator>::push_back(const T& value) {
-	if (sz == cap) reserve(2 * cap);
+	if (cap == 0) reserve(1);
+	else if (sz == cap) reserve(2 * cap);
 
 	AllocatorTraits::construct(allocator, arr + sz, value);
 	++sz;
@@ -322,7 +334,8 @@ void Vector<T, Allocator>::push_back(const T& value) {
 
 template <typename T, typename Allocator>
 void Vector<T, Allocator>::push_back(T&& value) {
-	if (sz == cap) reserve(2 * cap);
+	if (cap == 0) reserve(1);
+	else if (sz == cap) reserve(2 * cap);
 
 	AllocatorTraits::construct(allocator, arr + sz, std::move(value));
 	++sz;
