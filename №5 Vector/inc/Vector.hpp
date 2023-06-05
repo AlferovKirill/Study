@@ -5,6 +5,7 @@
 #include <memory>
 #include <iterator>
 #include <type_traits>
+#include <initializer_list>
 
 /*
 	Notes:
@@ -17,6 +18,7 @@ class Vector {
 public:
 	Vector();
 	Vector(size_t sz, const T& value = T(), const Allocator& allocator = Allocator());
+	Vector(std::initializer_list<T> list);
 	Vector(const Vector<T, Allocator>& another);
 	Vector(Vector<T, Allocator>&& another);
 	Vector<T, Allocator>& operator=(const Vector<T, Allocator>& another);
@@ -231,6 +233,18 @@ Vector<T, Allocator>::Vector() : sz(0), cap(0), arr(nullptr), allocator(Allocato
 template <typename T, typename Allocator>
 Vector<T, Allocator>::Vector(size_t sz, const T& value, const Allocator& allocator) : sz(0), cap(0), arr(nullptr), allocator(allocator) {
 	resize(sz, value);
+}
+
+template <typename T, typename Allocator>
+Vector<T, Allocator>::Vector(std::initializer_list<T> list) : sz(list.size()), cap(list.size()), arr(nullptr), allocator(Allocator()) {
+	arr = AllocatorTraits::allocate(allocator, cap);
+	size_t i = 0;
+
+	for (const T& item : list) {
+		AllocatorTraits::construct(allocator, arr + i, item);
+
+		++i;
+	}
 }
 
 template <typename T, typename Allocator>
