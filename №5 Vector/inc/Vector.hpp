@@ -9,8 +9,7 @@
 
 /*
 	Notes:
-	1) Create initializer_list
-	2) Reformate tests
+	1) Reformate tests
 */
 
 template <typename T, typename Allocator = std::allocator<T>>
