@@ -161,4 +161,14 @@ int main() {
 	}
 
 	std::cout << std::endl; 
+
+	init_vector.emplace_back(19);
+
+	std::cout << "init_vector after emplace_back: ";
+
+	for (auto item : init_vector) {
+		std::cout << item << " ";
+	}
+
+	std::cout << std::endl; 
 }

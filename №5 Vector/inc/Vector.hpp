@@ -30,6 +30,9 @@ public:
 	void push_back(T&& value);
 	void pop_back();
 
+	template <typename... Args>
+	void emplace_back(Args&&... args);
+
 	T& operator[](size_t i);
 	const T& operator[](size_t i) const;
 	T& at(size_t i);
@@ -379,6 +382,16 @@ template <typename T, typename Allocator>
 void Vector<T, Allocator>::pop_back() {
 	AllocatorTraits::destroy(allocator, arr + sz - 1);
 	--sz;
+}
+
+template <typename T, typename Allocator>
+template <typename... Args>
+void Vector<T, Allocator>::emplace_back(Args&&... args) {
+	if (cap == 0) reserve(1);
+	else if (sz == cap) reserve(2 * cap);
+
+	AllocatorTraits::construct(allocator, arr + sz, std::forward<Args>(args)...);
+	++sz;
 }
 
 template <typename T, typename Allocator>
