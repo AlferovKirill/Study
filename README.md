@@ -42,3 +42,10 @@
   <li>src/test.cpp - test file.</li>
   <li>CMakeLists.txt - build file.</li>
 </ul>
+
+<p align="justify">6. List - my implementation of a doubly linked list. Decomposed. All files:</p>
+<ul>
+  <li>inc/List.hpp - header file with implementation of the class.</li>
+  <li>src/test.cpp - test file.</li>
+  <li>CMakeLists.txt - build file.</li>
+</ul>
