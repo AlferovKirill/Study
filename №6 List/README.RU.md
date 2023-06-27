@@ -1,5 +1,5 @@
 <h1 align="center">List</h1>
-<h4>На других языках: <a href="https://github.com/AlferovKirill/Study/blob/main/README.md">English</a></h4>
+<h4>На других языках: <a href="https://github.com/AlferovKirill/Study/blob/main/№6%20List/README.md">English</a></h4>
 
 <p align="justify">List - моя реализация двусвязного списка. Всё декомпозировано. Файлы:</p>
 <ul>
