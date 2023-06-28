@@ -20,9 +20,9 @@ public:
 	List(size_t sz, const T& value = T(), const Allocator& allocator = Allocator());
 	List(const std::initializer_list<T>& lst);
 	List(const List<T, Allocator>& another);
-	//List(List<T, Allocator>&& another);
+	//List(List<T, Allocator>&& another) noexcept;
 	//List<T, Allocator>& operator=(const List<T, Allocator>& another);
-	//List<T, Allocator>& operator=(List<T, Allocator>&& another);
+	//List<T, Allocator>& operator=(List<T, Allocator>&& another) noexcept;
 	~List();
 
 	void resize(size_t new_sz, const T& value = T());
