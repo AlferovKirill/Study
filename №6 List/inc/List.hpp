@@ -20,9 +20,9 @@ public:
 	List(size_t sz, const T& value = T(), const Allocator& allocator = Allocator());
 	List(const std::initializer_list<T>& lst);
 	List(const List<T, Allocator>& another);
-	//List(List<T, Allocator>&& another) noexcept;
-	//List<T, Allocator>& operator=(const List<T, Allocator>& another) &;
-	//List<T, Allocator>& operator=(List<T, Allocator>&& another) & noexcept;
+	List(List<T, Allocator>&& another) noexcept;
+	List<T, Allocator>& operator=(const List<T, Allocator>& another) &;
+	List<T, Allocator>& operator=(List<T, Allocator>&& another) & noexcept;
 	~List();
 
 	void resize(size_t new_sz, const T& value = T());
@@ -209,9 +209,60 @@ List<T, Allocator>::List(const std::initializer_list<T>& lst) : List() {
 
 template <typename T, typename Allocator>
 List<T, Allocator>::List(const List<T, Allocator>& another) : List() {
+	allocator = AllocatorTraits::select_on_container_copy_construction(another.allocator);
+
 	for (const T& item : another) {
 		push_back(item);
 	}
+}
+
+template <typename T, typename Allocator>
+List<T, Allocator>::List(List<T, Allocator>&& another) noexcept : sz(another.sz), allocator(another.allocator), head(another.head), tail(another.tail), fake_begin(another.fake_begin), fake_end(another.fake_end) {
+	another.sz = 0;
+	another.head = nullptr;
+	another.tail = nullptr;
+	another.fake_begin = nullptr;
+	another.fake_end = nullptr;
+}
+
+template <typename T, typename Allocator>
+List<T, Allocator>& List<T, Allocator>::operator=(const List<T, Allocator>& another) & {
+	if (this == &another) return *this;
+
+	while (head != nullptr) {
+		pop_back();
+	}
+
+	allocator = AllocatorTraits::select_on_container_copy_construction(another.allocator);
+
+	for (const T& item : another) {
+		push_back(item);
+	}
+	
+	return *this;
+}
+
+template <typename T, typename Allocator>
+List<T, Allocator>& List<T, Allocator>::operator=(List<T, Allocator>&& another) & noexcept {
+	if (this == &another) return *this;
+
+	while (head != nullptr) {
+		pop_back();
+	}
+
+	sz = another.sz;
+	head = another.head;
+	tail = another.tail;
+	fake_begin = another.fake_begin;
+	fake_end = another.fake_end;
+
+	another.sz = 0;
+	another.head = nullptr;
+	another.tail = nullptr;
+	another.fake_begin = nullptr;
+	another.fake_end = nullptr;
+	
+	return *this;
 }
 
 template <typename T, typename Allocator>
