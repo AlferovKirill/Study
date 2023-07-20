@@ -137,4 +137,14 @@ int main() {
 	}
 
 	std::cout << "end!" << std::endl;
+
+	{
+		std::cout << "Check list constructor by default" << std::endl;
+
+		List<int> g = List<int>(3, 1);
+
+		for (const int& item : g) {
+			std::cout << item << " ";
+		}
+	}
 }

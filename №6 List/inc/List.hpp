@@ -8,8 +8,9 @@
 #include <initializer_list>
 
 /*
-	1) Реализовать конструкторы
+	1) Реализовать конструктор по итераторам
 	2) Сделать оболочку try-catch для конструкторов
+		Нужно в push_back'ах и push_front'ах при выбросе исключения в конструкторах деаллоцировать память
 	3) Сверить сигнатуры методов с cppreference
 */
 
@@ -17,13 +18,19 @@ template <typename T, typename Allocator = std::allocator<T>>
 class List {
 public:
 	List();
-	List(size_t sz, const T& value = T(), const Allocator& allocator = Allocator());
-	List(const std::initializer_list<T>& lst);
+	explicit List(const Allocator& allocator);
+	List(size_t sz, const T& value, const Allocator& allocator = Allocator());
+	explicit List(size_t sz, const Allocator& allocator = Allocator());
+	// Конструктор по итераторам
 	List(const List<T, Allocator>& another);
+	List(const List<T, Allocator>& another, const Allocator& allocator);
 	List(List<T, Allocator>&& another) noexcept;
+	List(List<T, Allocator>&& another, const Allocator& allocator) noexcept;
+	List(const std::initializer_list<T>& lst);
+	~List();
+	
 	List<T, Allocator>& operator=(const List<T, Allocator>& another) &;
 	List<T, Allocator>& operator=(List<T, Allocator>&& another) & noexcept;
-	~List();
 
 	void resize(size_t new_sz, const T& value = T());
 
@@ -196,8 +203,16 @@ template <typename T, typename Allocator>
 List<T, Allocator>::List() : sz(0), head(nullptr), tail(nullptr), fake_begin(nullptr), fake_end(nullptr), allocator(AllocatorNode()) {}
 
 template <typename T, typename Allocator>
+List<T, Allocator>::List(const Allocator& allocator) : sz(0), head(nullptr), tail(nullptr), fake_begin(nullptr), fake_end(nullptr), allocator(allocator) {}
+
+template <typename T, typename Allocator>
 List<T, Allocator>::List(size_t sz, const T& value, const Allocator& allocator) : sz(0), head(nullptr), tail(nullptr), fake_begin(nullptr), fake_end(nullptr), allocator(allocator) {
 	resize(sz, value);
+}
+
+template <typename T, typename Allocator>
+List<T, Allocator>::List(size_t sz, const Allocator& allocator) : List(allocator) {
+	resize(sz, T());
 }
 
 template <typename T, typename Allocator>
@@ -217,7 +232,23 @@ List<T, Allocator>::List(const List<T, Allocator>& another) : List() {
 }
 
 template <typename T, typename Allocator>
+List<T, Allocator>::List(const List<T, Allocator>& another, const Allocator& allocator) : List(allocator) {
+	for (const T& item : another) {
+		push_back(item);
+	}
+}
+
+template <typename T, typename Allocator>
 List<T, Allocator>::List(List<T, Allocator>&& another) noexcept : sz(another.sz), allocator(another.allocator), head(another.head), tail(another.tail), fake_begin(another.fake_begin), fake_end(another.fake_end) {
+	another.sz = 0;
+	another.head = nullptr;
+	another.tail = nullptr;
+	another.fake_begin = nullptr;
+	another.fake_end = nullptr;
+}
+
+template <typename T, typename Allocator> // Вопрос по тому, что у нас например фаст аллокатор и будет память в другом месте
+List<T, Allocator>::List(List<T, Allocator>&& another, const Allocator& allocator) noexcept : sz(another.sz), allocator(allocator), head(another.head), tail(another.tail), fake_begin(another.fake_begin), fake_end(another.fake_end) {
 	another.sz = 0;
 	another.head = nullptr;
 	another.tail = nullptr;
